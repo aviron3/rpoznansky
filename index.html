@@ -65,6 +65,7 @@
   --chooser-shadow: rgba(0,0,0,0.08);
   --brand-icon-opacity: 0.58;
   --brand-icon-filter: none;
+  --brand-icon-blend: multiply;
   --root-blur: 0px;
   --root-saturate: 100%;
   --root-shadow: none;
@@ -294,6 +295,7 @@ body[data-theme="inverted-noir"] {
   --chooser-shadow: rgba(121, 223, 255, 0.18);
   --brand-icon-opacity: 0.76;
   --brand-icon-filter: invert(1) grayscale(1) brightness(1.25) contrast(1.08);
+  --brand-icon-blend: screen;
 }
 
 body[data-theme="acid-wire"] {
@@ -403,6 +405,7 @@ body[data-theme="lumen-drift"] {
   --chooser-shadow: rgba(192, 166, 255, 0.3);
   --brand-icon-opacity: 0.88;
   --brand-icon-filter: invert(1) grayscale(1) brightness(1.16) contrast(0.94);
+  --brand-icon-blend: screen;
   --root-blur: 22px;
   --root-saturate: 132%;
   --root-shadow: 0 26px 90px rgba(0,0,0,0.38);
@@ -462,6 +465,7 @@ body[data-theme="violet-grid"] {
   --chooser-shadow: rgba(187, 152, 255, 0.28);
   --brand-icon-opacity: 0.88;
   --brand-icon-filter: invert(1) grayscale(1) brightness(1.18) contrast(0.96);
+  --brand-icon-blend: screen;
   --root-blur: 14px;
   --root-saturate: 122%;
   --root-shadow: 0 28px 100px rgba(0,0,0,0.46);
@@ -516,6 +520,7 @@ body[data-theme="webgl"] {
   --chooser-shadow: rgba(86, 245, 141, 0.24);
   --brand-icon-opacity: 0.82;
   --brand-icon-filter: invert(1) sepia(1) saturate(2.2) hue-rotate(70deg) brightness(1.08);
+  --brand-icon-blend: screen;
   --root-blur: 18px;
   --root-saturate: 118%;
   --root-shadow: 0 32px 120px rgba(0,0,0,0.62);
@@ -562,7 +567,7 @@ body {
   font-family: var(--font-body);
   font-synthesis: none;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   isolation: isolate;
   transition: background var(--motion-base) var(--ease-standard), color var(--motion-short) var(--ease-standard);
@@ -648,7 +653,7 @@ body.is-scrolled .lf-nav-backdrop {
   position: fixed;
   inset: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   z-index: 0;
   pointer-events: none;
   opacity: 0;
@@ -1005,6 +1010,7 @@ body.is-scrolled .lf-theme-toggle {
   height: 20px;
   object-fit: contain;
   filter: var(--brand-icon-filter);
+  mix-blend-mode: var(--brand-icon-blend);
   transition: width var(--motion-base) var(--ease-layout), height var(--motion-base) var(--ease-layout), filter var(--motion-fast) var(--ease-standard);
 }
 
@@ -1139,6 +1145,11 @@ body.is-scrolled .lf-theme-toggle img {
 .lf-glass-fade-section.has-open-panel {
   --section-progress: 0 !important;
 }
+/* Gentler fade for the chart section — blur cap halved, opacity stays readable longer */
+#lf-grad-stage > * {
+  opacity: calc(1 - (var(--section-progress) * 0.62));
+  filter: blur(calc(var(--section-progress) * 0.7px));
+}
 .lf-hnl-text-block { font-size: 14px; line-height: 1.65; color:var(--body-copy); }
 .lf-hnl-text-block p { margin: 0 0 0.75rem; }
 .lf-hnl-text-block em { font-style: normal; font-weight: 600; }
@@ -1162,6 +1173,8 @@ body.is-scrolled .lf-theme-toggle img {
 .lf-modal.shown .lf-modal-paper { transform: translateY(0); }
 .lf-modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: 0.5px solid var(--line-strong); color:var(--ink); width: 32px; height: 32px; cursor: pointer; font-family: var(--font-ui); font-size: 18px; line-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 0 2px; transition: background var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard); z-index: 2; }
 .lf-modal-close:hover { background: var(--accent-wash-soft); }
+.lf-modal-close-bar { position: sticky; top: 0; z-index: 5; display: flex; justify-content: flex-end; padding: 0.6rem 0.75rem; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(var(--glass-blur-sm)); -webkit-backdrop-filter: blur(var(--glass-blur-sm)); }
+.lf-modal-close-bar .lf-modal-close { position: static; }
 
 /* CV modal */
 #lf-cv-modal {
@@ -1419,6 +1432,7 @@ body.is-scrolled .lf-theme-toggle img {
 
   .lf-modal { padding: 1rem 0.75rem; }
   .lf-modal-paper { max-width: none; }
+  #lf-hnl-modal { padding-top: calc(72px + env(safe-area-inset-top)); }
 }
 </style>
 </head>
@@ -1970,7 +1984,7 @@ body.is-scrolled .lf-theme-toggle img {
   </div>
 </div>
 
-<div class="lf-hnl-teaser lf-glass-fade-section" id="lf-grad-stage" data-fade-delay="0.18">
+<div class="lf-hnl-teaser lf-glass-fade-section" id="lf-grad-stage" data-fade-delay="0.52">
   <div class="lf-hnl-text-block">
     <div class="lf-hnl-label">— Masters thesis in progress</div>
     <div class="lf-hnl-h">Park and Ride or <em>Placemaking?</em></div>
@@ -2155,7 +2169,9 @@ body.is-scrolled .lf-theme-toggle img {
 <!-- HONOLULU SUMMARY MODAL -->
 <div id="lf-hnl-modal" class="lf-modal" role="dialog" aria-modal="true" aria-labelledby="lf-hnl-title" aria-hidden="true">
   <div class="lf-modal-paper">
-    <button class="lf-modal-close" data-close="hnl" aria-label="Close">×</button>
+    <div class="lf-modal-close-bar">
+      <button class="lf-modal-close" data-close="hnl" aria-label="Close">×</button>
+    </div>
 
     <div class="lf-pm-head">
       <div class="lf-pm-kicker">— GEOG 820 · SFSU · Spring 2026</div>
@@ -2998,10 +3014,22 @@ body.is-scrolled .lf-theme-toggle img {
     modal.setAttribute('aria-hidden', shown ? 'false' : 'true');
   }
 
+  function blockModalTouchScroll(e) {
+    if (!e.target.closest('.lf-modal-paper')) {
+      e.preventDefault();
+    }
+  }
+
+  var _modalScrollY = 0;
+
   function closeAll() {
     setModalState(cvModal, false);
     setModalState(hnlModal, false);
     document.body.classList.remove('lf-modal-open');
+    [cvModal, hnlModal].forEach(function(m) {
+      m.removeEventListener('touchmove', blockModalTouchScroll);
+    });
+    window.scrollTo(0, _modalScrollY);
     if (activeTrigger) {
       activeTrigger.focus();
       activeTrigger = null;
@@ -3010,13 +3038,16 @@ body.is-scrolled .lf-theme-toggle img {
 
   function openModal(modal, trigger) {
     activeTrigger = trigger || document.activeElement;
+    _modalScrollY = window.scrollY;
     setModalState(cvModal, false);
     setModalState(hnlModal, false);
+    window.scrollTo(0, 0);
     setModalState(modal, true);
     document.body.classList.add('lf-modal-open');
     modal.scrollTop = 0;
     var modalPaper = modal.querySelector('.lf-modal-paper');
     if (modalPaper) modalPaper.scrollTop = 0;
+    modal.addEventListener('touchmove', blockModalTouchScroll, { passive: false });
     var focusTarget = modal.querySelector('.lf-modal-close, [data-close]');
     if (focusTarget) focusTarget.focus();
   }

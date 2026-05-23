@@ -244,7 +244,7 @@ svg {
 
 .hero-section {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
   padding-block: 4.75rem 2.5rem;
   overflow: clip;
 }
@@ -1170,6 +1170,8 @@ h4 {
   display: grid;
   place-items: center;
   padding: 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .lightbox-backdrop {
@@ -1182,14 +1184,14 @@ h4 {
   position: relative;
   z-index: 1;
   width: min(100%, 1100px);
-  max-height: calc(100vh - 3rem);
+  max-height: calc(100dvh - 3rem);
   display: grid;
   gap: 1rem;
 }
 
 .lightbox-image {
   width: 100%;
-  max-height: calc(100vh - 10rem);
+  max-height: calc(100dvh - 10rem);
   object-fit: contain;
   background: #122033;
 }

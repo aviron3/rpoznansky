@@ -78,6 +78,10 @@ function requestScrollEffects() {
   window.requestAnimationFrame(updateScrollEffects);
 }
 
+function blockTouchScroll(e) {
+  e.preventDefault();
+}
+
 function openLightbox(button) {
   if (!lightbox || !lightboxImage || !lightboxTitle || !lightboxMeta) {
     return;
@@ -91,6 +95,7 @@ function openLightbox(button) {
   lightbox.hidden = false;
   lightbox.setAttribute("aria-hidden", "false");
   document.body.classList.add("menu-open");
+  lightbox.addEventListener("touchmove", blockTouchScroll, { passive: false });
   lightbox.querySelector(".lightbox-close")?.focus();
 }
 
@@ -103,6 +108,7 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   lightboxImage.src = "";
   document.body.classList.remove("menu-open");
+  lightbox.removeEventListener("touchmove", blockTouchScroll);
   lastFocusedElement?.focus?.();
 }
 
