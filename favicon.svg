@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .line { stroke: #2a2820; }
+    .ring { stroke: #2a2820; fill: none; }
+    @media (prefers-color-scheme: dark) {
+      .line { stroke: #e6d5b8; }
+      .ring { stroke: #e6d5b8; }
+    }
+  </style>
+  <!-- Journey arc: hollow origin → filled destination -->
+  <path class="line" d="M5 26 C5 13 27 19 27 6"
+        fill="none" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- Origin: hollow ring -->
+  <circle class="ring" cx="5" cy="26" r="3.2" stroke-width="2.2"/>
+  <!-- Destination: solid orange dot -->
+  <circle cx="27" cy="6" r="3.8" fill="#d96a2c"/>
+</svg>
