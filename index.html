@@ -582,6 +582,16 @@ body[data-theme="webgl"] .lf-section-head {
   -webkit-backdrop-filter: none;
 }
 
+/* Toolbar & modal close-bar: solid dark background so the sticky bar
+   is legible — the transparent paper variable makes it near-invisible */
+body[data-theme="webgl"] .lf-cv-toolbar,
+body[data-theme="webgl"] .lf-modal-close-bar {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgba(2, 8, 5, 0.97);
+  border-bottom-color: var(--line);
+}
+
 body[data-theme="tangerine-blob"] {
   /* Dark base — lets WebGL dot-matrix glow through */
   --page-bg-start: #0a0614;
