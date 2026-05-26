@@ -4144,6 +4144,11 @@ body[data-theme="net-uplink"] .lf-cf-row.lf-case-entry::after {
         row.classList.add('open');
         row.setAttribute('aria-expanded', 'true');
         openCasePanel(panel);
+        // Scroll the opened row to just below the fixed topbar
+        var topbarEl = document.querySelector('.lf-topbar');
+        var topbarH = topbarEl ? topbarEl.offsetHeight : 80;
+        var rowAbsTop = row.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: Math.max(0, rowAbsTop - topbarH - 8), behavior: 'smooth' });
       }
     }
 
