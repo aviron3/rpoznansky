@@ -2122,6 +2122,190 @@ body[data-theme="net-uplink"] .lf-cf-row.lf-case-entry::after {
   opacity: 0.45;
 }
 
+/* ── Quantum Core Diagnostics theme ────────────────────────────────────────── */
+body[data-theme="quantum-core"] {
+  /* Fonts — JetBrains Mono across all roles */
+  --font-body:    'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-meta:    'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-display: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-ui:      'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-black:   'JetBrains Mono', 'Courier New', Courier, monospace;
+
+  /* Cool-gray surfaces */
+  --paper:        #f6f8fa;
+  --paper-soft:   #e4e7ec;
+  --paper-strong: #ffffff;
+
+  /* Text */
+  --ink:          #111827;
+  --body-copy:    #6B7280;
+  --ink-muted:    #9CA3AF;
+  --ink-soft:     #D1D5DB;
+
+  /* Lines */
+  --line:         rgba(156,163,175,0.28);
+  --line-strong:  rgba(156,163,175,0.55);
+
+  /* Accent — dark navy, no hue */
+  --accent:            #374151;
+  --accent-warm:       rgba(55,65,81,0.18);
+  --accent-wash:       rgba(55,65,81,0.09);
+  --accent-wash-soft:  rgba(55,65,81,0.05);
+
+  /* Radius — 4px base · 12px controls · 23px panels · 39px shell */
+  --radius-control:   12px;
+  --border-radius-lg: 23px;
+
+  /* Page background — gradient from near-white to cool mid-gray */
+  --page-bg-start: #f6f8fa;
+  --page-bg-end:   #aeb4bb;
+
+  /* Footer */
+  --footer-bg:    #111827;
+  --footer-text:  #9CA3AF;
+  --footer-muted: rgba(156,163,175,0.62);
+  --footer-low:   rgba(156,163,175,0.38);
+
+  /* Dark card surfaces */
+  --dark-surface:   #111827;
+  --dark-surface-2: #1f2937;
+  --dark-surface-3: #374151;
+  --dark-line:      rgba(156,163,175,0.18);
+  --dark-line-soft: rgba(156,163,175,0.28);
+  --dark-text:      #ffffff;
+  --dark-copy:      rgba(255,255,255,0.88);
+  --dark-muted:     rgba(255,255,255,0.55);
+  --dark-soft:      rgba(255,255,255,0.32);
+
+  /* Success */
+  --success:        #374151;
+  --success-strong: #111827;
+
+  /* Glass tokens — mild blur, cool tint */
+  --root-blur:           12px;
+  --root-saturate:       105%;
+  --glass-blur-sm:        8px;
+  --glass-blur-lg:       16px;
+  --glass-shell:         linear-gradient(to bottom, rgb(246,248,250), rgb(228,231,236));
+  --glass-border-strong: rgba(156,163,175,0.55);
+  --glass-shadow:
+    rgba(0,0,0,0.035) 0px 2.8px 2.2px 0px,
+    rgba(0,0,0,0.047) 0px 6.7px 5.3px 0px,
+    rgba(0,0,0,0.06)  0px 12.5px 10px 0px,
+    rgba(0,0,0,0.07)  0px 22.3px 17.9px 0px,
+    rgba(0,0,0,0.086) 0px 41.8px 33.4px 0px,
+    rgba(0,0,0,0.12)  0px 100px 80px 0px;
+
+  /* Brand icon — multiply on light bg */
+  --brand-icon-opacity: 0.65;
+  --brand-icon-filter:  none;
+  --brand-icon-blend:   multiply;
+
+  /* Chooser */
+  --chooser-shadow: rgba(17,24,39,0.12);
+}
+
+/* ── Root shell — gradient border (spec: 39px outer, gradient top-to-bottom) ── */
+body[data-theme="quantum-core"] .lf-root-shell {
+  border-radius: 39px;
+  overflow: hidden;
+  padding: 1px;
+  background: linear-gradient(to bottom, rgb(246,248,250), rgb(204,209,216));
+  box-shadow:
+    rgba(0,0,0,0.035) 0px 2.8px 2.2px,
+    rgba(0,0,0,0.047) 0px 6.7px 5.3px,
+    rgba(0,0,0,0.06)  0px 12.5px 10px,
+    rgba(0,0,0,0.07)  0px 22.3px 17.9px,
+    rgba(0,0,0,0.086) 0px 41.8px 33.4px,
+    rgba(0,0,0,0.12)  0px 100px 80px;
+}
+
+/* ── Topbar — white card, inset shadow + hairline border ── */
+body[data-theme="quantum-core"] .lf-topbar {
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(156,163,175,0.45);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow:
+    rgba(0,0,0,0.1)   0px 1px 2px 0px inset,
+    rgba(255,255,255,1) 0px 1px 0px 0px;
+}
+body.is-scrolled[data-theme="quantum-core"] .lf-topbar {
+  background: #ffffff;
+  border-color: rgba(156,163,175,0.45);
+}
+
+/* ── Section panels — elevated card per spec (23px radius, inset highlight) ── */
+body[data-theme="quantum-core"] .lf-hero-stage,
+body[data-theme="quantum-core"] .lf-section-head,
+body[data-theme="quantum-core"] .lf-cf-wrap,
+body[data-theme="quantum-core"] .lf-glass-fade-section {
+  border-radius: 23px;
+  background: #f6f8fa;
+  border: none;
+  box-shadow:
+    rgba(255,255,255,0.4) 0px 2px 4px 0px inset,
+    rgba(0,0,0,0.1)       0px 2px 3px -1px,
+    rgba(25,28,33,0.02)   0px 1px 0px 0px,
+    rgba(25,28,33,0.08)   0px 0px 0px 1px;
+}
+
+/* ── Hero — ultra-light mono, tight leading per spec ── */
+body[data-theme="quantum-core"] .lf-hero {
+  font-weight: 100;
+  letter-spacing: -0.025em;
+  line-height: 0.9;
+}
+
+/* ── CV toolbar — white frosted ── */
+body[data-theme="quantum-core"] .lf-cv-toolbar,
+body[data-theme="quantum-core"] .lf-modal-close-bar {
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  background: rgba(246,248,250,0.96);
+  border-bottom: 1px solid rgba(156,163,175,0.35);
+}
+
+/* ── Modal paper — 23px radius, hairline border ── */
+body[data-theme="quantum-core"] .lf-modal-paper {
+  border-radius: 23px;
+  border: 1px solid rgba(156,163,175,0.45);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow:
+    rgba(255,255,255,0.4) 0px 2px 4px 0px inset,
+    rgba(0,0,0,0.1)       0px 2px 3px -1px,
+    rgba(25,28,33,0.08)   0px 0px 0px 1px;
+}
+
+/* ── Controls — 12px per spec radius family ── */
+body[data-theme="quantum-core"] .lf-cv-btn,
+body[data-theme="quantum-core"] .lf-modal-close {
+  border-radius: 12px;
+}
+
+/* ── Case row dividers — cool hairline ── */
+body[data-theme="quantum-core"] .lf-cf-row {
+  border-bottom: 1px solid rgba(156,163,175,0.3);
+}
+body[data-theme="quantum-core"] .lf-cf-row:first-child { border-top: none; }
+body[data-theme="quantum-core"] .lf-cf-row.lf-case-entry::after {
+  background: rgba(55,65,81,0.5);
+  opacity: 0.5;
+}
+
+/* ── Section label mono — use dark ink ── */
+body[data-theme="quantum-core"] .lf-section-head .lf-mono,
+body[data-theme="quantum-core"] .lf-section-head .lf-mono * {
+  color: #374151 !important;
+  opacity: 1 !important;
+}
+
+/* ── Case row mono badges ── */
+body[data-theme="quantum-core"] .lf-cf-row .lf-mono,
+body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
+  color: #9CA3AF !important;
+  opacity: 1 !important;
+}
+
 </style>
 </head>
 <!-- Fonts for Atmospheric Data Console theme -->
@@ -3554,7 +3738,8 @@ body[data-theme="net-uplink"] .lf-cf-row.lf-case-entry::after {
     { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' },
     { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' },
     { id: 'atmo-console', label: 'Warm Dispatch', tone: 'technical' },
-    { id: 'net-uplink', label: 'Amber Uplink', tone: 'technical' }
+    { id: 'net-uplink', label: 'Amber Uplink', tone: 'technical' },
+    { id: 'quantum-core', label: 'Cold Brief', tone: 'technical' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
