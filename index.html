@@ -1787,6 +1787,15 @@ body[data-theme="atmo-console"] .lf-modal-paper {
     rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
     rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
 }
+/* Modal: gap from topbar = same 24px margin as the shell's outer edge */
+body[data-theme="atmo-console"] .lf-modal {
+  padding: calc(88px + 24px) 1rem 1rem !important;
+}
+@media (max-width: 680px) {
+  body[data-theme="atmo-console"] .lf-modal {
+    padding: calc(60px + 20px) 0.75rem 0.75rem !important;
+  }
+}
 /* Toolbar: transparent — buttons float above content, no competing bar */
 body[data-theme="atmo-console"] .lf-cv-toolbar {
   background: transparent;
