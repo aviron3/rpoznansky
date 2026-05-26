@@ -1808,6 +1808,258 @@ body[data-theme="atmo-console"] .lf-cf-row.lf-case-entry::after {
   opacity: 0.7;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   NETWORK UPLINK TERMINAL  ·  Theme: Amber Uplink
+   Dark warm-brown palette, SFMono throughout, gradient-shell elevation
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+body[data-theme="net-uplink"] {
+  /* ── Fonts: SFMono throughout ── */
+  --font-body:    'SFMono-Regular','SF Mono',ui-monospace,'Cascadia Code','Fira Code','Consolas',monospace;
+  --font-meta:    'SFMono-Regular','SF Mono',ui-monospace,'Cascadia Code','Fira Code','Consolas',monospace;
+  --font-display: 'SFMono-Regular','SF Mono',ui-monospace,'Cascadia Code','Fira Code','Consolas',monospace;
+  --font-ui:      'SFMono-Regular','SF Mono',ui-monospace,'Cascadia Code','Fira Code','Consolas',monospace;
+
+  /* ── Surfaces ── */
+  --paper:        #2A1E16;
+  --paper-soft:   #1A140F;
+  --paper-strong: #443427;
+
+  /* ── Text — warm amber gold ── */
+  --ink:       #C8A96E;
+  --body-copy: #C8A96E;
+  --ink-muted: #755A30;
+  --ink-soft:  #755A30;
+
+  /* ── Lines ── */
+  --line:        rgba(200,169,110,0.15);
+  --line-strong: rgba(200,169,110,0.28);
+
+  /* ── Dark component surfaces (used by case rows, cards) ── */
+  --dark-surface:   #1A140F;
+  --dark-surface-2: #120E0A;
+  --dark-surface-3: #443427;
+  --dark-line:      rgba(200,169,110,0.12);
+  --dark-line-soft: rgba(200,169,110,0.18);
+  --dark-text:      #C8A96E;
+  --dark-copy:      rgba(200,169,110,0.88);
+  --dark-muted:     rgba(200,169,110,0.55);
+  --dark-soft:      rgba(200,169,110,0.36);
+
+  /* ── Radius: 6px · 8px · 12px · 24px · 9999px ── */
+  --radius-control:   6px;
+  --border-radius-lg: 8px;
+
+  /* ── Orange accent ── */
+  --accent:           #D96A2C;
+  --accent-warm:      rgba(217,106,44,0.28);
+  --accent-wash:      rgba(217,106,44,0.12);
+  --accent-wash-soft: rgba(217,106,44,0.07);
+  --success:          #755A30;
+  --success-strong:   #8a6a38;
+
+  /* ── Page background ── */
+  --page-glow:      rgba(200,169,110,0.06);
+  --page-bg-start:  #4D3A2B;
+  --page-bg-end:    #2A1E16;
+
+  /* ── Footer ── */
+  --footer-bg:    #1A140F;
+  --footer-text:  #C8A96E;
+  --footer-muted: rgba(200,169,110,0.62);
+  --footer-low:   rgba(200,169,110,0.38);
+
+  /* ── Brand icon ── */
+  --chooser-shadow:    rgba(200,169,110,0.18);
+  --brand-icon-opacity: 0.45;
+  --brand-icon-filter: sepia(100%) saturate(50%) brightness(0.55);
+  --brand-icon-blend:  luminosity;
+
+  /* ── No backdrop blur ── */
+  --root-blur:     0px;
+  --root-saturate: 100%;
+
+  /* ── Glass tokens repurposed for amber shell ── */
+  --glass-border:        rgba(255,230,200,0.12);
+  --glass-border-strong: rgba(255,230,200,0.22);
+  --glass-shell:         linear-gradient(145deg, rgba(255,230,200,0.20) 0%, rgba(255,230,200,0.04) 45%, rgba(0,0,0,0.30) 100%);
+  --glass-shadow:        rgba(0,0,0,0.9) 0px 4px 12px 0px inset, rgba(255,230,200,0.06) 0px 1px 1px 0px;
+  --glass-shadow-soft:   rgba(0,0,0,0.6) 0px 2px 8px 0px inset, rgba(255,230,200,0.04) 0px 1px 1px 0px;
+
+  /* ── Scan-line ambient texture ── */
+  --ambient-layer-1: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(200,169,110,0.025) 3px,
+    rgba(200,169,110,0.025) 4px
+  );
+  --ambient-layer-1-opacity: 1;
+  --ambient-layer-1-blur:    0px;
+  --ambient-layer-1-duration: 60s;
+  --ambient-layer-1-blend:   normal;
+  --ambient-layer-1-repeat:  repeat;
+  --ambient-layer-1-size:    100% auto;
+
+  /* ── Warm radial glow ── */
+  --ambient-layer-2:
+    radial-gradient(ellipse at 28% 18%, rgba(200,169,110,0.10) 0 20%, transparent 55%),
+    radial-gradient(ellipse at 72% 84%, rgba(77,58,43,0.70)    0 30%, transparent 65%);
+  --ambient-layer-2-opacity:  0.88;
+  --ambient-layer-2-blur:     40px;
+  --ambient-layer-2-duration: 52s;
+  --ambient-layer-2-blend:    normal;
+  --ambient-layer-2-repeat:   no-repeat;
+  --ambient-layer-2-size:     100% 100%;
+  --ambient-layer-2-mask:     linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.65));
+}
+
+/* ── Hero headline — spec: SFMono weight 200, tight tracking ────────────── */
+body[data-theme="net-uplink"] .lf-hero {
+  font-family: var(--font-display);
+  font-weight: 200;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+/* Hero emphasis word — orange pop */
+body[data-theme="net-uplink"] .lf-hero .italic {
+  color: #D96A2C;
+  font-weight: 500;
+}
+
+/* ── Outer gradient-shell — spec "thin gradient border hairline frame" ── */
+body[data-theme="net-uplink"] .lf-root-shell {
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 1px;
+  background: linear-gradient(145deg, rgba(255,230,200,0.22) 0%, rgba(255,230,200,0.06) 42%, rgba(0,0,0,0.38) 100%);
+  border: none;
+  box-shadow:
+    rgba(0,0,0,0.9) 0px 60px 100px -20px,
+    rgb(30,22,16)   0px 12px 0px 0px,
+    rgba(0,0,0,0.6) 0px 13px 4px 0px;
+}
+
+/* ── Inner content root ── */
+body[data-theme="net-uplink"] .lf-root {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 23px;
+  border: none;
+  background: var(--paper);
+  box-shadow: none;
+}
+
+/* Kill pseudo backdrop-filters */
+body[data-theme="net-uplink"] .lf-hero-stage::before,
+body[data-theme="net-uplink"] .lf-glass-fade-section::before {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 0.04;
+}
+
+/* ── Section panels — 8px, spec inner surface shadow recipe ─────────────── */
+body[data-theme="net-uplink"] .lf-hero-stage,
+body[data-theme="net-uplink"] .lf-section-head,
+body[data-theme="net-uplink"] .lf-cf-wrap,
+body[data-theme="net-uplink"] .lf-glass-fade-section {
+  border-radius: 8px;
+  border: none;
+  background: #2A1E16;
+  box-shadow:
+    rgba(0,0,0,0.9) 0px 4px 12px 0px inset,
+    rgb(0,0,0)      0px 0px 0px 1px inset,
+    rgba(255,230,200,0.05) 0px 1px 1px 0px;
+}
+
+/* ── Large component cards — 24px, spec outer shadow recipe ─────────────── */
+body[data-theme="net-uplink"] .ui-frame,
+body[data-theme="net-uplink"] .lf-hnl-teaser-fig {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 24px;
+  border: none;
+  background: #4D3A2B;
+  box-shadow:
+    rgba(0,0,0,0.9)      0px 60px 100px -20px,
+    rgb(30,22,16)        0px 12px 0px 0px,
+    rgba(0,0,0,0.6)      0px 13px 4px 0px,
+    rgba(255,230,200,0.15) 0px 1px 1px 0px inset,
+    rgba(0,0,0,0.4)      0px -1px 2px 0px inset;
+}
+
+/* ── Modal — 12px, inner shadow ── */
+body[data-theme="net-uplink"] .lf-modal-paper {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 12px;
+  border: none;
+  background: #2A1E16;
+  box-shadow:
+    rgba(0,0,0,0.9) 0px 4px 12px 0px inset,
+    rgb(0,0,0)      0px 0px 0px 1px inset,
+    rgba(255,230,200,0.06) 0px 1px 1px 0px;
+}
+
+/* ── Expanded case panel — 8px ── */
+body[data-theme="net-uplink"] .lf-cf-panel { border-radius: 8px; }
+
+/* ── Buttons — 6px spec base ── */
+body[data-theme="net-uplink"] .lf-cv-btn,
+body[data-theme="net-uplink"] .lf-modal-close { border-radius: 6px; }
+
+/* ── Topbar — 8px, inner shadow treatment ── */
+body[data-theme="net-uplink"] .lf-topbar {
+  border-radius: 8px;
+  border: none;
+  background: #2A1E16;
+  box-shadow:
+    rgba(0,0,0,0.9) 0px 4px 12px 0px inset,
+    rgb(0,0,0)      0px 0px 0px 1px inset,
+    rgba(255,230,200,0.06) 0px 1px 1px 0px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+body.is-scrolled[data-theme="net-uplink"] .lf-topbar {
+  background: #1A140F;
+  box-shadow:
+    rgba(0,0,0,0.9) 0px 4px 12px 0px inset,
+    rgb(0,0,0)      0px 0px 0px 1px inset,
+    rgba(255,230,200,0.06) 0px 1px 1px 0px;
+}
+
+/* ── Text overrides (beat GSAP inline styles) ── */
+body[data-theme="net-uplink"] .lf-section-head .lf-mono,
+body[data-theme="net-uplink"] .lf-section-head .lf-mono *,
+body[data-theme="net-uplink"] .lf-section-head [class*="lf-mono"] {
+  color: #D96A2C !important;
+  opacity: 1 !important;
+}
+/* Nav link hover — orange */
+body[data-theme="net-uplink"] .lf-link-top:hover,
+body[data-theme="net-uplink"] .lf-link-top:focus-visible {
+  color: #D96A2C !important;
+}
+body[data-theme="net-uplink"] .lf-cf-row .lf-mono,
+body[data-theme="net-uplink"] .lf-cf-row .lf-mono * {
+  color: #755A30 !important;
+  opacity: 1 !important;
+}
+body[data-theme="net-uplink"] .lf-cf-row:hover .lf-meta,
+body[data-theme="net-uplink"] .lf-cf-row.open .lf-meta {
+  color: rgba(200,169,110,0.55) !important;
+}
+
+/* ── Case row dividers — amber hairline ── */
+body[data-theme="net-uplink"] .lf-cf-row {
+  border-bottom: 1px solid rgba(200,169,110,0.14);
+}
+body[data-theme="net-uplink"] .lf-cf-row:first-child { border-top: none; }
+body[data-theme="net-uplink"] .lf-cf-row.lf-case-entry::after {
+  background: rgba(200,169,110,0.45);
+  opacity: 0.45;
+}
+
 </style>
 </head>
 <!-- Fonts for Atmospheric Data Console theme -->
@@ -3243,7 +3495,8 @@ body[data-theme="atmo-console"] .lf-cf-row.lf-case-entry::after {
     { id: 'mint-lilac', label: 'Mint Condition', tone: 'playful' },
     { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' },
     { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' },
-    { id: 'atmo-console', label: 'Warm Dispatch', tone: 'technical' }
+    { id: 'atmo-console', label: 'Warm Dispatch', tone: 'technical' },
+    { id: 'net-uplink', label: 'Amber Uplink', tone: 'technical' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
