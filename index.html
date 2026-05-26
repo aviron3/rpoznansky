@@ -564,6 +564,89 @@ body[data-theme="webgl"] {
   --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.9));
 }
 
+body[data-theme="tangerine-blob"] {
+  /* Dark base — lets WebGL dot-matrix glow through */
+  --page-bg-start: #0a0614;
+  --page-bg-end: #06040c;
+  --page-glow: rgba(232, 96, 26, 0.20);
+
+  /* Translucent dark panels — warm-tinted glass */
+  --paper: rgba(10, 6, 28, 0.76);
+  --paper-soft: rgba(14, 10, 36, 0.72);
+  --paper-strong: rgba(22, 16, 50, 0.84);
+
+  /* Text: warm ivory on dark */
+  --ink: #fff4e0;
+  --body-copy: rgba(255, 244, 220, 0.90);
+  --ink-muted: rgba(255, 236, 180, 0.62);
+  --ink-soft: rgba(255, 224, 160, 0.36);
+
+  /* Lines */
+  --line: rgba(255, 200, 80, 0.14);
+  --line-strong: rgba(255, 200, 80, 0.26);
+
+  /* Cobalt card surfaces */
+  --dark-surface: rgba(20, 18, 82, 0.84);
+  --dark-surface-2: rgba(30, 28, 108, 0.82);
+  --dark-surface-3: rgba(44, 42, 132, 0.80);
+  --dark-line: rgba(245, 240, 60, 0.18);
+  --dark-line-soft: rgba(245, 240, 60, 0.28);
+  --dark-text: #f5ef42;
+  --dark-copy: rgba(245, 240, 80, 0.88);
+  --dark-muted: rgba(245, 240, 110, 0.58);
+  --dark-soft: rgba(245, 240, 130, 0.36);
+
+  /* Accent: yellow */
+  --accent: #f5ef42;
+  --accent-warm: #fff9a8;
+  --accent-wash: rgba(245, 240, 66, 0.18);
+  --accent-wash-soft: rgba(245, 240, 66, 0.10);
+
+  --success: #4a58e8;
+  --success-strong: #2d3ee0;
+
+  /* Footer */
+  --footer-bg: #0c0a38;
+  --footer-text: #f5ef42;
+  --footer-muted: rgba(245, 240, 80, 0.65);
+  --footer-low: rgba(245, 240, 110, 0.38);
+
+  --chooser-shadow: rgba(245, 240, 66, 0.28);
+  --brand-icon-opacity: 0.9;
+  --brand-icon-filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(10deg) brightness(0.95);
+  --brand-icon-blend: multiply;
+
+  --root-blur: 12px;
+  --root-saturate: 130%;
+  --root-shadow: 0 28px 100px rgba(20, 10, 60, 0.72);
+  --glass-border: rgba(245, 200, 80, 0.14);
+  --glass-border-strong: rgba(245, 200, 80, 0.26);
+  --glass-shell: linear-gradient(to right, rgba(0,0,0,0), rgba(245,200,60,0.08), rgba(0,0,0,0));
+  --glass-shadow: 0 28px 100px rgba(20, 10, 60, 0.60);
+  --glass-shadow-soft: 0 16px 48px rgba(20, 10, 60, 0.38);
+
+  /* Ambient fallback — shows when WebGL blob is not running */
+  --ambient-layer-1:
+    radial-gradient(ellipse at 72% 88%, rgba(48, 58, 210, 0.62) 0 20%, transparent 50%),
+    radial-gradient(ellipse at 18% 22%, rgba(232, 96, 26, 0.52) 0 18%, transparent 42%),
+    radial-gradient(circle at 50% 50%, rgba(245, 240, 60, 0.06) 0 8%, transparent 24%),
+    linear-gradient(180deg, #0a0614 0%, #06040c 100%);
+  --ambient-layer-1-opacity: 1;
+  --ambient-layer-1-blur: 0px;
+  --ambient-layer-1-duration: 34s;
+  --ambient-layer-1-blend: normal;
+  --ambient-layer-2:
+    radial-gradient(ellipse at 78% 86%, rgba(232, 96, 26, 0.44) 0 16%, transparent 40%),
+    radial-gradient(ellipse at 20% 24%, rgba(54, 66, 220, 0.40) 0 14%, transparent 36%);
+  --ambient-layer-2-opacity: 0.90;
+  --ambient-layer-2-blur: 52px;
+  --ambient-layer-2-duration: 52s;
+  --ambient-layer-2-blend: screen;
+  --ambient-layer-2-repeat: no-repeat;
+  --ambient-layer-2-size: 100% 100%;
+  --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.80));
+}
+
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -645,6 +728,11 @@ body.webgl-ready[data-theme="webgl"]::after {
   opacity: 0;
 }
 
+body.blob-ready[data-theme="tangerine-blob"]::before,
+body.blob-ready[data-theme="tangerine-blob"]::after {
+  opacity: 0;
+}
+
 .lf-nav-backdrop {
   position: fixed;
   top: 0;
@@ -681,7 +769,11 @@ body[data-theme="webgl"] .lf-webgl-canvas {
   opacity: 0.5;
 }
 
-body:not([data-theme="webgl"]) .lf-webgl-canvas {
+body[data-theme="tangerine-blob"] .lf-webgl-canvas {
+  opacity: 0.86;
+}
+
+body:not([data-theme="webgl"]):not([data-theme="tangerine-blob"]) .lf-webgl-canvas {
   opacity: 0;
 }
 
@@ -2898,7 +2990,8 @@ body.is-scrolled .lf-theme-toggle img {
     { id: 'lumen-drift', label: 'Liquid Loiter', tone: 'atmospheric' },
     { id: 'apricot-pop', label: 'Peach Fax', tone: 'playful' },
     { id: 'mint-lilac', label: 'Mint Condition', tone: 'playful' },
-    { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' }
+    { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' },
+    { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
@@ -2906,6 +2999,7 @@ body.is-scrolled .lf-theme-toggle img {
   var fieldMark = document.getElementById('lf-field-mark');
   var webglCanvas = document.getElementById('webgl-canvas');
   var webglController = null;
+  var blobController = null;
   var heroStage = document.getElementById('lf-hero-stage');
   var caseHead = document.getElementById('lf-case-head');
   var caseStage = document.getElementById('lf-case-stage');
@@ -3039,11 +3133,127 @@ body.is-scrolled .lf-theme-toggle img {
     };
   }
 
-  try {
-    webglController = initWebGLGrid();
-  } catch (err) {
-    webglController = null;
-    document.body.classList.remove('webgl-ready');
+  function initBlobDots() {
+    if (!webglCanvas || !window.THREE) return null;
+    var THREE = window.THREE;
+    var renderer = new THREE.WebGLRenderer({
+      canvas: webglCanvas,
+      alpha: true,
+      antialias: false,
+      powerPreference: 'high-performance'
+    });
+    renderer.setClearColor(0x000000, 0);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    var resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
+
+    var material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      uniforms: {
+        uTime:       { value: 0 },
+        uPointer:    { value: new THREE.Vector2(0, 0) },
+        uResolution: { value: resolution }
+      },
+      vertexShader: [
+        'void main() {',
+        '  gl_Position = vec4(position.xy, 0.0, 1.0);',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'precision highp float;',
+        'uniform float uTime;',
+        'uniform vec2 uPointer;',
+        'uniform vec2 uResolution;',
+        'float hash21(vec2 p) {',
+        '  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);',
+        '}',
+        'vec3 pickColor(vec2 cell) {',
+        '  float h = hash21(cell + 0.5);',
+        '  if (h < 0.55) return vec3(0.910, 0.376, 0.098);',
+        '  if (h < 0.88) return vec3(0.188, 0.251, 0.847);',
+        '  return vec3(0.961, 0.937, 0.259);',
+        '}',
+        'void main() {',
+        '  vec2 fragUV  = gl_FragCoord.xy / uResolution;',
+        '  float aspect = uResolution.x / uResolution.y;',
+        '  vec2 drift   = vec2(uPointer.x * 0.018, uPointer.y * 0.012);',
+        '  vec2 coord   = vec2(fragUV.x * aspect + drift.x, fragUV.y + drift.y);',
+        '  float spacing = 0.042;',
+        '  vec2 cell    = floor(coord / spacing);',
+        '  vec2 cellUV  = fract(coord / spacing);',
+        '  float phase  = hash21(cell + 0.5) * 6.2832;',
+        '  float bf     = 0.30 + hash21(cell + vec2(1.1, 2.3)) * 0.18;',
+        '  float breath = 0.50 + 0.50 * sin(uTime * bf + phase);',
+        '  float r      = length(cellUV - 0.5);',
+        '  float radius = 0.15 + 0.08 * breath;',
+        '  float circle = 1.0 - smoothstep(radius - 0.025, radius + 0.025, r);',
+        '  float ss     = hash21(cell + vec2(42.1, 17.3));',
+        '  float sparse = step(0.62, ss);',
+        '  float ex = smoothstep(0.0, 0.08, fragUV.x) * smoothstep(0.0, 0.08, 1.0 - fragUV.x);',
+        '  float ey = smoothstep(0.0, 0.06, fragUV.y) * smoothstep(0.0, 0.06, 1.0 - fragUV.y);',
+        '  float dc = length(fragUV - 0.5) * 2.0;',
+        '  float cf = 1.0 - smoothstep(0.5, 1.0, dc);',
+        '  float bright = 0.65 + 0.35 * breath;',
+        '  vec3  color  = pickColor(cell) * bright;',
+        '  float alpha  = circle * ex * ey * sparse * (0.55 + 0.45 * cf);',
+        '  gl_FragColor = vec4(color, alpha);',
+        '}'
+      ].join('\n')
+    });
+
+    var geometry = new THREE.PlaneGeometry(2, 2);
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    var start = performance.now();
+    var running = true;
+
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      var w = Math.max(1, window.innerWidth);
+      var h = Math.max(1, window.innerHeight);
+      renderer.setPixelRatio(dpr);
+      renderer.setSize(w, h, false);
+      resolution.set(w * dpr, h * dpr);
+    }
+
+    function onPointerMove(e) {
+      pointer.tx = (e.clientX / Math.max(1, window.innerWidth) - 0.5) * 2;
+      pointer.ty = (e.clientY / Math.max(1, window.innerHeight) - 0.5) * 2;
+    }
+
+    function render(now) {
+      if (!running) return;
+      var seconds = (now - start) * 0.001;
+      pointer.x += (pointer.tx - pointer.x) * 0.025;
+      pointer.y += (pointer.ty - pointer.y) * 0.025;
+      material.uniforms.uTime.value = seconds;
+      material.uniforms.uPointer.value.set(pointer.x, pointer.y);
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    document.body.classList.add('blob-ready');
+    requestAnimationFrame(render);
+
+    return {
+      destroy: function() {
+        running = false;
+        window.removeEventListener('resize', resize);
+        window.removeEventListener('pointermove', onPointerMove);
+        geometry.dispose();
+        material.dispose();
+        renderer.dispose();
+        document.body.classList.remove('blob-ready');
+      }
+    };
   }
 
   function hasSessionStorage() {
@@ -3102,6 +3312,21 @@ body.is-scrolled .lf-theme-toggle img {
     } catch (err) {}
     if (shouldPersist && hasSessionStorage()) {
       sessionStorage.setItem(themeSessionKey, theme.id);
+    }
+    // WebGL controller management — swap between grid and dot-matrix
+    if (theme.id === 'tangerine-blob') {
+      if (webglController) { webglController.destroy(); webglController = null; }
+      if (!blobController) {
+        try { blobController = initBlobDots(); } catch(e) { blobController = null; }
+      }
+    } else if (theme.id === 'webgl') {
+      if (blobController) { blobController.destroy(); blobController = null; }
+      if (!webglController) {
+        try { webglController = initWebGLGrid(); } catch(e) { webglController = null; document.body.classList.remove('webgl-ready'); }
+      }
+    } else {
+      if (blobController) { blobController.destroy(); blobController = null; }
+      if (webglController) { webglController.destroy(); webglController = null; }
     }
   }
 
