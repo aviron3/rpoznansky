@@ -1423,6 +1423,8 @@ body.is-scrolled .lf-theme-toggle img {
   .lf-brand-name { font-size: 14px; }
   .lf-topbar { flex-wrap: nowrap; }
   .lf-link-top { font-size: 11px; white-space: nowrap; }
+  /* Pinch-zoom artifact fix: backdrop-filter loses compositor texture on mobile */
+  .lf-hnl-teaser-fig { backdrop-filter: none; -webkit-backdrop-filter: none; }
   .lf-hero { font-size: clamp(42px, 14vw, 62px); }
   .lf-hero-stage { min-height: 460px; padding: 3rem 1.25rem 3rem; }
   .lf-hero-stage::before { inset: 0.75rem; }
