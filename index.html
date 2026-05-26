@@ -1343,7 +1343,7 @@ body.is-scrolled .lf-theme-toggle img {
 /* Modal */
 .lf-modal { position: fixed; inset: 0; background: rgba(10,10,10,0.92); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity var(--motion-base) var(--ease-standard); display: flex; align-items: flex-start; justify-content: center; padding: calc(clamp(0px, 2vw, 24px) + 88px + 0.75rem) 1rem 1rem; overflow: hidden; }
 .lf-modal.shown { opacity: 1; pointer-events: auto; }
-.lf-modal-paper { background:var(--paper); color:var(--ink); width: 100%; max-width: 780px; max-height: calc(100dvh - 2rem); padding: 0; border-radius: var(--radius-control); border: 1px solid var(--glass-border-strong); position: relative; transform: translateY(10px); box-shadow: var(--glass-shadow); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); transition: transform var(--motion-base) var(--ease-layout), background var(--motion-short) var(--ease-standard), color var(--motion-short) var(--ease-standard); }
+.lf-modal-paper { background:var(--paper); color:var(--ink); width: 100%; max-width: 780px; max-height: calc(100dvh - clamp(0px, 2vw, 24px) - 88px - 1.75rem); padding: 0; border-radius: var(--radius-control); border: 1px solid var(--glass-border-strong); position: relative; transform: translateY(10px); box-shadow: var(--glass-shadow); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); transition: transform var(--motion-base) var(--ease-layout), background var(--motion-short) var(--ease-standard), color var(--motion-short) var(--ease-standard); }
 .lf-modal.shown .lf-modal-paper { transform: translateY(0); }
 .lf-modal-close { position: absolute; top: 1rem; right: 1rem; background: transparent; border: 0.5px solid var(--line-strong); color:var(--ink); width: 32px; height: 32px; cursor: pointer; font-family: var(--font-ui); font-size: 18px; line-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 0 2px; transition: background var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard); z-index: 2; }
 .lf-modal-close:hover { background: var(--accent-wash-soft); }
@@ -1610,7 +1610,7 @@ body.is-scrolled .lf-theme-toggle img {
   .lf-cv-skills { grid-template-columns: 1fr; }
 
   .lf-modal { padding: calc(60px + 0.75rem) 0.75rem 0.75rem; }
-  .lf-modal-paper { max-width: none; }
+  .lf-modal-paper { max-width: none; max-height: calc(100dvh - 60px - 1.75rem); }
   #lf-hnl-modal { padding-top: calc(72px + env(safe-area-inset-top)); }
 
   /* Tap-map comparison: stack phones vertically, stats as a row between them */
@@ -2220,6 +2220,52 @@ body[data-theme="quantum-core"] .lf-root-shell {
     rgba(0,0,0,0.12)  0px 100px 80px;
 }
 
+/* ── Inner root — 38px radius to match 39px shell (same pattern as other shells) ── */
+body[data-theme="quantum-core"] .lf-root {
+  border-radius: 38px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+}
+
+/* ── Hero stage — corner brackets + diagnostic label ── */
+body[data-theme="quantum-core"] .lf-hero-stage::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  opacity: 1;
+  transform: none;
+  border: none;
+  /* 4 corner brackets via stacked gradients */
+  background:
+    linear-gradient(to right,  rgba(55,65,81,0.4) 20px, transparent 20px) 0    0    / 20px 1.5px no-repeat,
+    linear-gradient(to bottom, rgba(55,65,81,0.4) 20px, transparent 20px) 0    0    / 1.5px 20px no-repeat,
+    linear-gradient(to left,   rgba(55,65,81,0.4) 20px, transparent 20px) 100% 0    / 20px 1.5px no-repeat,
+    linear-gradient(to bottom, rgba(55,65,81,0.4) 20px, transparent 20px) 100% 0    / 1.5px 20px no-repeat,
+    linear-gradient(to right,  rgba(55,65,81,0.4) 20px, transparent 20px) 0    100% / 20px 1.5px no-repeat,
+    linear-gradient(to top,    rgba(55,65,81,0.4) 20px, transparent 20px) 0    100% / 1.5px 20px no-repeat,
+    linear-gradient(to left,   rgba(55,65,81,0.4) 20px, transparent 20px) 100% 100% / 20px 1.5px no-repeat,
+    linear-gradient(to top,    rgba(55,65,81,0.4) 20px, transparent 20px) 100% 100% / 1.5px 20px no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+body[data-theme="quantum-core"] .lf-hero-stage::after {
+  content: "Q_CORE  //  SYNC_PROTO";
+  position: absolute;
+  bottom: 22px;
+  right: 28px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: #9CA3AF;
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* ── Topbar — white card, inset shadow + hairline border ── */
 body[data-theme="quantum-core"] .lf-topbar {
   border-radius: 12px;
@@ -2265,9 +2311,10 @@ body[data-theme="quantum-core"] .lf-modal-close-bar {
   border-bottom: 1px solid rgba(156,163,175,0.35);
 }
 
-/* ── Modal paper — 23px radius, hairline border ── */
+/* ── Modal paper — 23px radius, correct max-height for 112px top padding ── */
 body[data-theme="quantum-core"] .lf-modal-paper {
   border-radius: 23px;
+  max-height: calc(100dvh - 112px - 1.75rem);
   border: 1px solid rgba(156,163,175,0.45);
   backdrop-filter: none; -webkit-backdrop-filter: none;
   box-shadow:
