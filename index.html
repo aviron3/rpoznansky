@@ -604,13 +604,13 @@ body[data-theme="tangerine-blob"] .lf-modal-close-bar {
   border-bottom-color: var(--line);
 }
 
-/* Warm Dispatch: remove backdrop-filter, use solid paper-strong surface */
+/* Warm Dispatch: frosted cream toolbar / close-bar */
 body[data-theme="atmo-console"] .lf-cv-toolbar,
 body[data-theme="atmo-console"] .lf-modal-close-bar {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  background: var(--paper-strong);
-  border-bottom-color: rgba(255,255,255,0.55);
+  background: rgba(237, 234, 226, 0.80);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid rgba(90,86,80,0.12);
 }
 
 /* Amber Uplink: remove backdrop-filter, use solid dark-brown surface */
@@ -1634,163 +1634,170 @@ body[data-theme="atmo-console"] {
   --font-display: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
   --font-ui: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
 
-  /* Light warm sandy surfaces */
-  --paper: #DCD9CE;
-  --paper-soft: #D0CDC2;
-  --paper-strong: #E6E3D8;
+  /* Surfaces — light cream device casing */
+  --paper: #EDEAE2;
+  --paper-soft: #E5E2DA;
+  --paper-strong: #F4F1EA;
 
   /* Text */
-  --ink: #2A2820;
-  --body-copy: #686660;
-  --ink-muted: #504E4A;
-  --ink-soft: #6e6c68;
+  --ink: #1C1A17;
+  --body-copy: #5A5854;
+  --ink-muted: #46443F;
+  --ink-soft: #6E6C68;
 
   /* Lines */
-  --line: rgba(104,102,96,0.18);
-  --line-strong: rgba(104,102,96,0.32);
+  --line: rgba(90,86,80,0.14);
+  --line-strong: rgba(90,86,80,0.24);
 
-  /* Dark card surfaces */
-  --dark-surface: #2A2A2A;
-  --dark-surface-2: #323230;
-  --dark-surface-3: #3A3A38;
-  --dark-line: rgba(118,210,182,0.16);
-  --dark-line-soft: rgba(118,210,182,0.26);
-  --dark-text: #76D2B6;
-  --dark-copy: rgba(118,210,182,0.88);
-  --dark-muted: rgba(118,210,182,0.55);
-  --dark-soft: rgba(118,210,182,0.36);
+  /* Embedded screen surfaces — near-black */
+  --dark-surface: #0D0D0B;
+  --dark-surface-2: #131311;
+  --dark-surface-3: #1B1B19;
+  --dark-line: rgba(56,214,178,0.14);
+  --dark-line-soft: rgba(56,214,178,0.22);
+  --dark-text: #38D6B2;
+  --dark-copy: rgba(56,214,178,0.90);
+  --dark-muted: rgba(56,214,178,0.56);
+  --dark-soft: rgba(56,214,178,0.32);
 
-  /* Radius system: 4px · 12px · 24px · 40px · 9999px */
-  --radius-control: 4px;
-  --border-radius-lg: 12px;
+  /* Radius: 6px base · 16px panels · 24px shell */
+  --radius-control: 6px;
+  --border-radius-lg: 16px;
 
-  /* Red-coral accent */
-  --accent: #E15045;
-  --accent-warm: #f5ccc7;
-  --accent-wash: rgba(225,80,69,0.10);
-  --accent-wash-soft: rgba(225,80,69,0.06);
+  /* Coral accent */
+  --accent: #D94F44;
+  --accent-warm: #f2c8c4;
+  --accent-wash: rgba(217,79,68,0.09);
+  --accent-wash-soft: rgba(217,79,68,0.05);
 
-  --success: #76D2B6;
-  --success-strong: #5ab89e;
+  --success: #38D6B2;
+  --success-strong: #28B896;
 
-  /* Page background — warm sandy gray */
-  --page-glow: rgba(255,255,255,0.52);
-  --page-bg-start: #C4C1B7;
-  --page-bg-end: #A09D94;
+  /* Page background — warm light stone */
+  --page-glow: rgba(255,255,255,0.60);
+  --page-bg-start: #D6D2C8;
+  --page-bg-end: #C2BEB4;
 
-  /* Footer — dark with teal text */
-  --footer-bg: #2A2A2A;
-  --footer-text: #76D2B6;
-  --footer-muted: rgba(118,210,182,0.62);
-  --footer-low: rgba(118,210,182,0.38);
+  /* Footer — near-black with bright teal text */
+  --footer-bg: #0D0D0B;
+  --footer-text: #38D6B2;
+  --footer-muted: rgba(56,214,178,0.60);
+  --footer-low: rgba(56,214,178,0.34);
 
-  --chooser-shadow: rgba(225,80,69,0.18);
-  --brand-icon-opacity: 0.65;
+  --chooser-shadow: rgba(217,79,68,0.16);
+  --brand-icon-opacity: 0.62;
   --brand-icon-filter: none;
   --brand-icon-blend: multiply;
 
-  /* Neumorphic elevated surfaces */
+  /* Smooth neumorphic elevation */
   --root-blur: 0px;
   --root-saturate: 100%;
-  --root-shadow: rgba(160,155,140,0.55) 10px 10px 20px 0px, rgba(255,255,255,0.88) -10px -10px 20px 0px;
+  --root-shadow:
+    rgba(130,124,112,0.38) 8px 8px 24px 0px,
+    rgba(255,255,255,0.92) -6px -6px 18px 0px;
 
-  --glass-border: rgba(255,255,255,0.82);
-  --glass-border-strong: rgba(255,255,255,0.96);
-  --glass-shell: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.32), rgba(255,255,255,0.15));
-  --glass-shadow: rgba(160,155,140,0.55) 8px 8px 16px 0px, rgba(255,255,255,0.88) -8px -8px 16px 0px;
-  --glass-shadow-soft: rgba(160,155,140,0.4) 4px 4px 10px 0px, rgba(255,255,255,0.72) -4px -4px 10px 0px;
+  --glass-border: rgba(255,255,255,0.76);
+  --glass-border-strong: rgba(255,255,255,0.92);
+  --glass-shell: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.08));
+  --glass-shadow:
+    rgba(130,124,112,0.32) 6px 6px 18px 0px,
+    rgba(255,255,255,0.86) -4px -4px 14px 0px;
+  --glass-shadow-soft:
+    rgba(130,124,112,0.22) 3px 3px 10px 0px,
+    rgba(255,255,255,0.72) -2px -2px 8px 0px;
 
-  /* Dot-matrix ambient background */
-  --ambient-layer-1: radial-gradient(circle, rgba(104,102,96,0.32) 1.5px, transparent 1.5px);
-  --ambient-layer-1-opacity: 0.80;
+  /* Subtle dot matrix — very light, almost invisible */
+  --ambient-layer-1: radial-gradient(circle, rgba(90,86,80,0.18) 1px, transparent 1px);
+  --ambient-layer-1-opacity: 0.50;
   --ambient-layer-1-blur: 0px;
-  --ambient-layer-1-duration: 60s;
+  --ambient-layer-1-duration: 80s;
   --ambient-layer-1-blend: multiply;
   --ambient-layer-1-repeat: repeat;
-  --ambient-layer-1-size: 20px 20px;
+  --ambient-layer-1-size: 22px 22px;
 
-  /* Soft accent washes */
+  /* Gentle tonal washes — barely perceptible */
   --ambient-layer-2:
-    radial-gradient(ellipse at 20% 18%, rgba(225,80,69,0.09) 0 22%, transparent 52%),
-    radial-gradient(ellipse at 78% 82%, rgba(118,210,182,0.11) 0 26%, transparent 56%);
-  --ambient-layer-2-opacity: 0.88;
-  --ambient-layer-2-blur: 48px;
-  --ambient-layer-2-duration: 52s;
+    radial-gradient(ellipse at 22% 16%, rgba(217,79,68,0.06) 0 20%, transparent 50%),
+    radial-gradient(ellipse at 76% 84%, rgba(56,214,178,0.07) 0 24%, transparent 54%);
+  --ambient-layer-2-opacity: 0.72;
+  --ambient-layer-2-blur: 60px;
+  --ambient-layer-2-duration: 60s;
   --ambient-layer-2-blend: normal;
   --ambient-layer-2-repeat: no-repeat;
   --ambient-layer-2-size: 100% 100%;
-  --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.82), rgba(0,0,0,0.68));
+  --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.56));
 }
 
-/* ── Atmo Console: Elevated Panel System ──────────────────────────────────── */
+/* ── Atmo Console: Clean Device System ────────────────────────────────────── */
 
-/* Outer shell — 24px per spec radius system */
+/* Outer shell — device casing, 28px, smooth highlight edge */
 body[data-theme="atmo-console"] .lf-root-shell {
-  border-radius: 24px;
+  border-radius: 28px;
   overflow: hidden;
-  border: 1px solid #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.90);
   box-shadow:
-    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
-    rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
+    rgba(120,114,102,0.28) 0px 8px 28px 0px,
+    rgba(120,114,102,0.14) 0px 2px 6px 0px,
+    rgba(255,255,255,0.95) -1px -1px 0px 0px inset;
 }
 
-/* Main root — 23px (1px inset from shell) */
+/* Main root — 27px (1px inset from shell) */
 body[data-theme="atmo-console"] .lf-root {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-radius: 23px;
-  border-color: #FFFFFF;
+  border-radius: 27px;
+  border-color: transparent;
   box-shadow: none;
 }
 
-/* Kill all backdrop-filter pseudo-elements inside the theme */
+/* Suppress default glass overlay pseudo-elements */
 body[data-theme="atmo-console"] .lf-hero-stage::before,
 body[data-theme="atmo-console"] .lf-glass-fade-section::before {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  opacity: 0.04;
+  opacity: 0.02;
 }
 
-/* ── Section panels — exact spec recipe, 12px radius ─────────────────────── */
+/* ── Section panels — 16px, smooth cream elevation ───────────────────────── */
 body[data-theme="atmo-console"] .lf-hero-stage,
 body[data-theme="atmo-console"] .lf-section-head,
 body[data-theme="atmo-console"] .lf-cf-wrap,
 body[data-theme="atmo-console"] .lf-glass-fade-section {
-  border: 1px solid #FFFFFF;
-  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.80);
+  border-radius: 16px;
   box-shadow:
-    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
-    rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
+    rgba(110,104,92,0.18) 0px 2px 8px 0px inset,
+    rgba(255,255,255,0.88) 0px 1px 0px 0px;
 }
 
-/* Hero: keep the spec border at the bottom edge */
 body[data-theme="atmo-console"] .lf-hero-stage {
-  border-bottom-color: #FFFFFF;
+  border-bottom-color: rgba(255,255,255,0.80);
 }
 
-/* Dark component cards — 24px radius */
+/* Dark component cards — near-black screens, 20px */
 body[data-theme="atmo-console"] .ui-frame,
 body[data-theme="atmo-console"] .lf-hnl-teaser-fig {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  background: #0D0D0B;
+  border: 1px solid rgba(255,255,255,0.08);
   box-shadow:
-    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
-    rgba(255, 255, 255, 0.08) 1px 1px 1px 0px;
+    rgba(0,0,0,0.55) 0px 4px 16px 0px,
+    rgba(255,255,255,0.06) 0px 1px 0px 0px inset;
 }
 
-/* Modal — 24px */
+/* Modal — cream panel, 24px */
 body[data-theme="atmo-console"] .lf-modal-paper {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-radius: 24px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid rgba(255,255,255,0.88);
   box-shadow:
-    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
-    rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
+    rgba(110,104,92,0.30) 0px 8px 28px 0px,
+    rgba(255,255,255,0.92) -1px -1px 0px 0px inset;
 }
-/* Modal: gap from topbar = same 24px margin as the shell's outer edge */
+/* Modal gap from topbar */
 body[data-theme="atmo-console"] .lf-modal {
   padding: calc(88px + 24px) 1rem 1rem !important;
 }
@@ -1799,23 +1806,24 @@ body[data-theme="atmo-console"] .lf-modal {
     padding: calc(60px + 20px) 0.75rem 0.75rem !important;
   }
 }
-/* Toolbar: frosted glass — sandy tint + blur so scrolled content reads cleanly */
+
+/* Toolbar: frosted cream glass */
 body[data-theme="atmo-console"] .lf-cv-toolbar {
-  background: rgba(220, 217, 206, 0.72);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border-bottom: 1px solid rgba(104, 102, 96, 0.18);
+  background: rgba(237, 234, 226, 0.78);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid rgba(90,86,80,0.12);
 }
 
-/* Expanded case panel — 12px */
+/* Expanded case panel — 16px */
 body[data-theme="atmo-console"] .lf-cf-panel {
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
-/* CV buttons — 4px (spec base control radius) + warm text instead of teal */
+/* CV buttons — 6px, warm text */
 body[data-theme="atmo-console"] .lf-cv-btn,
 body[data-theme="atmo-console"] .lf-modal-close {
-  border-radius: 4px;
+  border-radius: 6px;
 }
 body[data-theme="atmo-console"] .lf-cv-btn:not(.lf-cv-btn-ghost) {
   color: var(--paper-strong);
@@ -1824,50 +1832,47 @@ body[data-theme="atmo-console"] .lf-cv-btn:not(.lf-cv-btn-ghost):hover {
   color: #ffffff;
 }
 
-/* ── Section label mono text — high contrast dark on sandy ──────────────── */
+/* Section label mono text */
 body[data-theme="atmo-console"] .lf-section-head .lf-mono,
 body[data-theme="atmo-console"] .lf-section-head .lf-mono *,
 body[data-theme="atmo-console"] .lf-section-head [class*="lf-mono"] {
-  color: #2A2820 !important;
+  color: #1C1A17 !important;
   opacity: 1 !important;
 }
 
 /* Case list year/client badges */
 body[data-theme="atmo-console"] .lf-cf-row .lf-mono,
 body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
-  color: #504E4A !important;
+  color: #46443F !important;
   opacity: 1 !important;
 }
 
-/* ── Topbar — 12px elevated panel, matches section panels ───────────────── */
+/* Topbar — same cream device panel, 16px */
 body[data-theme="atmo-console"] .lf-topbar {
-  border-radius: 12px;
-  border: 1px solid #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.82);
   box-shadow:
-    rgba(0,0,0,0.4) 1px 1px 2px 0px inset,
-    rgba(255,255,255,0.8) 1px 1px 1px 0px;
+    rgba(110,104,92,0.18) 0px 2px 8px 0px inset,
+    rgba(255,255,255,0.90) 0px 1px 0px 0px;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   background: var(--paper-strong);
 }
 body.is-scrolled[data-theme="atmo-console"] .lf-topbar {
   background: var(--paper-strong);
-  border-color: #FFFFFF;
-  box-shadow:
-    rgba(0,0,0,0.4) 1px 1px 2px 0px inset,
-    rgba(255,255,255,0.8) 1px 1px 1px 0px;
+  border-color: rgba(255,255,255,0.82);
 }
 
-/* ── Case file row dividers — white-spec border, consistent with panels ─── */
+/* Case row dividers — subtle cream separator */
 body[data-theme="atmo-console"] .lf-cf-row {
-  border-bottom: 1px solid rgba(255,255,255,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.52);
 }
 body[data-theme="atmo-console"] .lf-cf-row:first-child {
   border-top: none;
 }
 body[data-theme="atmo-console"] .lf-cf-row.lf-case-entry::after {
-  background: rgba(255,255,255,0.7);
-  opacity: 0.7;
+  background: rgba(255,255,255,0.65);
+  opacity: 0.65;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
