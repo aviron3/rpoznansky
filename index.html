@@ -1283,7 +1283,7 @@ body.is-scrolled .lf-theme-toggle img {
 .lf-hnl-teaser-cap { font-family: var(--font-meta); font-size: 10px; letter-spacing: 0.02em; color:var(--ink-soft); margin-top: 0.5rem; line-height: 1.5; font-weight: 400; }
 
 /* Modal */
-.lf-modal { position: fixed; inset: 0; background: rgba(10,10,10,0.92); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity var(--motion-base) var(--ease-standard); display: flex; align-items: flex-start; justify-content: center; padding: 1rem; overflow: hidden; }
+.lf-modal { position: fixed; inset: 0; background: rgba(10,10,10,0.92); z-index: 1000; opacity: 0; pointer-events: none; transition: opacity var(--motion-base) var(--ease-standard); display: flex; align-items: flex-start; justify-content: center; padding: calc(clamp(0px, 2vw, 24px) + 88px + 0.75rem) 1rem 1rem; overflow: hidden; }
 .lf-modal.shown { opacity: 1; pointer-events: auto; }
 .lf-modal-paper { background:var(--paper); color:var(--ink); width: 100%; max-width: 780px; max-height: calc(100dvh - 2rem); padding: 0; border-radius: var(--radius-control); border: 1px solid var(--glass-border-strong); position: relative; transform: translateY(10px); box-shadow: var(--glass-shadow); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); -webkit-backdrop-filter: blur(var(--glass-blur-lg)) saturate(var(--root-saturate)); transition: transform var(--motion-base) var(--ease-layout), background var(--motion-short) var(--ease-standard), color var(--motion-short) var(--ease-standard); }
 .lf-modal.shown .lf-modal-paper { transform: translateY(0); }
@@ -1551,7 +1551,7 @@ body.is-scrolled .lf-theme-toggle img {
   .lf-cv-job,
   .lf-cv-skills { grid-template-columns: 1fr; }
 
-  .lf-modal { padding: 1rem 0.75rem; }
+  .lf-modal { padding: calc(60px + 0.75rem) 0.75rem 0.75rem; }
   .lf-modal-paper { max-width: none; }
   #lf-hnl-modal { padding-top: calc(72px + env(safe-area-inset-top)); }
 
@@ -1660,29 +1660,65 @@ body[data-theme="atmo-console"] {
   --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.82), rgba(0,0,0,0.68));
 }
 
-/* Disable backdrop-filter blur — neumorphic uses surface color, not glass */
+/* ── Atmo Console: Elevated Panel System ──────────────────────────────────── */
+
+/* Outer shell — elevated panel from spec:
+   border 1px #FFFFFF, shadow inset dark + outset white highlight */
+body[data-theme="atmo-console"] .lf-root-shell {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #FFFFFF;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
+    rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
+}
+
+/* Main root — clean, no blur */
 body[data-theme="atmo-console"] .lf-root {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  box-shadow: rgba(160,155,140,0.55) 8px 8px 24px 0px inset, rgba(255,255,255,0.88) -8px -8px 24px 0px inset, rgba(180,175,160,0.25) 2px 2px 4px 0px inset;
+  border-radius: 19px;
+  border-color: #FFFFFF;
+  box-shadow: none;
 }
 
-/* Neumorphic outset shadow on dark cards */
+/* Kill all backdrop-filter pseudo-elements inside the theme */
+body[data-theme="atmo-console"] .lf-hero-stage::before,
+body[data-theme="atmo-console"] .lf-glass-fade-section::before {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 0.04;
+}
+
+/* ── Section panels — exact spec recipe ──────────────────────────────────── */
+body[data-theme="atmo-console"] .lf-hero-stage,
+body[data-theme="atmo-console"] .lf-section-head,
+body[data-theme="atmo-console"] .lf-cf-wrap,
+body[data-theme="atmo-console"] .lf-glass-fade-section {
+  border: 1px solid #FFFFFF;
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
+    rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
+}
+
+/* Hero: remove the default bottom border, let the spec border take over */
+body[data-theme="atmo-console"] .lf-hero-stage {
+  border-bottom-color: #FFFFFF;
+}
+
+/* Dark component cards */
 body[data-theme="atmo-console"] .ui-frame,
 body[data-theme="atmo-console"] .lf-hnl-teaser-fig,
 body[data-theme="atmo-console"] .lf-modal-paper {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  box-shadow: rgba(40,38,34,0.62) 6px 6px 14px 0px, rgba(80,76,68,0.28) -2px -2px 8px 0px;
-  border-color: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
+    rgba(255, 255, 255, 0.08) 1px 1px 1px 0px;
 }
 
-/* Accent bar becomes coral */
-body[data-theme="atmo-console"] .lf-hero-stage::before {
-  opacity: 0.06;
-}
-
-/* Section label mono text — high contrast dark on sandy */
+/* ── Section label mono text — high contrast dark on sandy ──────────────── */
 body[data-theme="atmo-console"] .lf-section-head .lf-mono,
 body[data-theme="atmo-console"] .lf-section-head .lf-mono *,
 body[data-theme="atmo-console"] .lf-section-head [class*="lf-mono"] {
@@ -1690,25 +1726,11 @@ body[data-theme="atmo-console"] .lf-section-head [class*="lf-mono"] {
   opacity: 1 !important;
 }
 
-/* Case list: year/client badges — readable dark */
+/* Case list year/client badges */
 body[data-theme="atmo-console"] .lf-cf-row .lf-mono,
 body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
   color: #504E4A !important;
   opacity: 1 !important;
-}
-
-/* Accent rule on the hero stage — coral instead of default */
-body[data-theme="atmo-console"] .lf-hero-stage {
-  border-bottom-color: rgba(225,80,69,0.18);
-}
-
-/* More visible neumorphic inset on main panel */
-body[data-theme="atmo-console"] .lf-root {
-  box-shadow:
-    rgba(155,150,138,0.68) 10px 10px 28px 0px inset,
-    rgba(255,255,255,0.92) -10px -10px 28px 0px inset,
-    rgba(178,173,160,0.28) 2px 2px 6px 0px inset;
-  border-color: rgba(255,255,255,0.72);
 }
 
 </style>
@@ -3148,7 +3170,7 @@ body[data-theme="atmo-console"] .lf-root {
     { id: 'mint-lilac', label: 'Mint Condition', tone: 'playful' },
     { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' },
     { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' },
-    { id: 'atmo-console', label: 'Atmospheric Console', tone: 'technical' }
+    { id: 'atmo-console', label: 'Warm Dispatch', tone: 'technical' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
