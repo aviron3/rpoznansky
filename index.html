@@ -1567,8 +1567,156 @@ body.is-scrolled .lf-theme-toggle img {
     padding: 0.5rem 0;
   }
 }
+
+/* ── Atmospheric Data Console theme ────────────────────────────────────────── */
+body[data-theme="atmo-console"] {
+  /* Fonts — Inter display / JetBrains Mono body */
+  --font-body: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-meta: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  --font-display: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
+  --font-ui: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
+
+  /* Light warm sandy surfaces */
+  --paper: #DCD9CE;
+  --paper-soft: #D0CDC2;
+  --paper-strong: #E6E3D8;
+
+  /* Text */
+  --ink: #2A2820;
+  --body-copy: #686660;
+  --ink-muted: #504E4A;
+  --ink-soft: #6e6c68;
+
+  /* Lines */
+  --line: rgba(104,102,96,0.18);
+  --line-strong: rgba(104,102,96,0.32);
+
+  /* Dark card surfaces */
+  --dark-surface: #2A2A2A;
+  --dark-surface-2: #323230;
+  --dark-surface-3: #3A3A38;
+  --dark-line: rgba(118,210,182,0.16);
+  --dark-line-soft: rgba(118,210,182,0.26);
+  --dark-text: #76D2B6;
+  --dark-copy: rgba(118,210,182,0.88);
+  --dark-muted: rgba(118,210,182,0.55);
+  --dark-soft: rgba(118,210,182,0.36);
+
+  /* Red-coral accent */
+  --accent: #E15045;
+  --accent-warm: #f5ccc7;
+  --accent-wash: rgba(225,80,69,0.10);
+  --accent-wash-soft: rgba(225,80,69,0.06);
+
+  --success: #76D2B6;
+  --success-strong: #5ab89e;
+
+  /* Page background — warm sandy gray */
+  --page-glow: rgba(255,255,255,0.52);
+  --page-bg-start: #C4C1B7;
+  --page-bg-end: #A09D94;
+
+  /* Footer — dark with teal text */
+  --footer-bg: #2A2A2A;
+  --footer-text: #76D2B6;
+  --footer-muted: rgba(118,210,182,0.62);
+  --footer-low: rgba(118,210,182,0.38);
+
+  --chooser-shadow: rgba(225,80,69,0.18);
+  --brand-icon-opacity: 0.65;
+  --brand-icon-filter: none;
+  --brand-icon-blend: multiply;
+
+  /* Neumorphic elevated surfaces */
+  --root-blur: 0px;
+  --root-saturate: 100%;
+  --root-shadow: rgba(160,155,140,0.55) 10px 10px 20px 0px, rgba(255,255,255,0.88) -10px -10px 20px 0px;
+
+  --glass-border: rgba(255,255,255,0.82);
+  --glass-border-strong: rgba(255,255,255,0.96);
+  --glass-shell: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.32), rgba(255,255,255,0.15));
+  --glass-shadow: rgba(160,155,140,0.55) 8px 8px 16px 0px, rgba(255,255,255,0.88) -8px -8px 16px 0px;
+  --glass-shadow-soft: rgba(160,155,140,0.4) 4px 4px 10px 0px, rgba(255,255,255,0.72) -4px -4px 10px 0px;
+
+  /* Dot-matrix ambient background */
+  --ambient-layer-1: radial-gradient(circle, rgba(104,102,96,0.32) 1.5px, transparent 1.5px);
+  --ambient-layer-1-opacity: 0.80;
+  --ambient-layer-1-blur: 0px;
+  --ambient-layer-1-duration: 60s;
+  --ambient-layer-1-blend: multiply;
+  --ambient-layer-1-repeat: repeat;
+  --ambient-layer-1-size: 20px 20px;
+
+  /* Soft accent washes */
+  --ambient-layer-2:
+    radial-gradient(ellipse at 20% 18%, rgba(225,80,69,0.09) 0 22%, transparent 52%),
+    radial-gradient(ellipse at 78% 82%, rgba(118,210,182,0.11) 0 26%, transparent 56%);
+  --ambient-layer-2-opacity: 0.88;
+  --ambient-layer-2-blur: 48px;
+  --ambient-layer-2-duration: 52s;
+  --ambient-layer-2-blend: normal;
+  --ambient-layer-2-repeat: no-repeat;
+  --ambient-layer-2-size: 100% 100%;
+  --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.82), rgba(0,0,0,0.68));
+}
+
+/* Disable backdrop-filter blur — neumorphic uses surface color, not glass */
+body[data-theme="atmo-console"] .lf-root {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: rgba(160,155,140,0.55) 8px 8px 24px 0px inset, rgba(255,255,255,0.88) -8px -8px 24px 0px inset, rgba(180,175,160,0.25) 2px 2px 4px 0px inset;
+}
+
+/* Neumorphic outset shadow on dark cards */
+body[data-theme="atmo-console"] .ui-frame,
+body[data-theme="atmo-console"] .lf-hnl-teaser-fig,
+body[data-theme="atmo-console"] .lf-modal-paper {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: rgba(40,38,34,0.62) 6px 6px 14px 0px, rgba(80,76,68,0.28) -2px -2px 8px 0px;
+  border-color: rgba(255,255,255,0.08);
+}
+
+/* Accent bar becomes coral */
+body[data-theme="atmo-console"] .lf-hero-stage::before {
+  opacity: 0.06;
+}
+
+/* Section label mono text — high contrast dark on sandy */
+body[data-theme="atmo-console"] .lf-section-head .lf-mono,
+body[data-theme="atmo-console"] .lf-section-head .lf-mono *,
+body[data-theme="atmo-console"] .lf-section-head [class*="lf-mono"] {
+  color: #2A2820 !important;
+  opacity: 1 !important;
+}
+
+/* Case list: year/client badges — readable dark */
+body[data-theme="atmo-console"] .lf-cf-row .lf-mono,
+body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
+  color: #504E4A !important;
+  opacity: 1 !important;
+}
+
+/* Accent rule on the hero stage — coral instead of default */
+body[data-theme="atmo-console"] .lf-hero-stage {
+  border-bottom-color: rgba(225,80,69,0.18);
+}
+
+/* More visible neumorphic inset on main panel */
+body[data-theme="atmo-console"] .lf-root {
+  box-shadow:
+    rgba(155,150,138,0.68) 10px 10px 28px 0px inset,
+    rgba(255,255,255,0.92) -10px -10px 28px 0px inset,
+    rgba(178,173,160,0.28) 2px 2px 6px 0px inset;
+  border-color: rgba(255,255,255,0.72);
+}
+
 </style>
 </head>
+<!-- Fonts for Atmospheric Data Console theme -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" id="lf-atmo-fonts">
 <body data-theme="editorial-ivory" data-motion="expressive">
 
 <!-- WebGL Background (Additive Wireframe) -->
@@ -2999,7 +3147,8 @@ body.is-scrolled .lf-theme-toggle img {
     { id: 'apricot-pop', label: 'Peach Fax', tone: 'playful' },
     { id: 'mint-lilac', label: 'Mint Condition', tone: 'playful' },
     { id: 'acid-wire', label: 'Acid Wire Memo', tone: 'edgy' },
-    { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' }
+    { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' },
+    { id: 'atmo-console', label: 'Atmospheric Console', tone: 'technical' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
