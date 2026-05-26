@@ -564,6 +564,24 @@ body[data-theme="webgl"] {
   --ambient-layer-2-mask: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.9));
 }
 
+/* ── Green Room Grid: Safari compositing fix ──────────────────────────────
+   backdrop-filter on .lf-root creates a separate compositor layer that
+   Safari won't blend the WebGL canvas through. Remove it so the canvas
+   shows via CSS transparency on both Chrome and Safari.                    */
+body[data-theme="webgl"] {
+  --paper: rgba(3, 8, 6, 0.56); /* lower opacity so grid reads through */
+  --paper-soft: rgba(7, 18, 13, 0.62);
+  --paper-strong: rgba(10, 28, 19, 0.72);
+}
+
+body[data-theme="webgl"] .lf-root,
+body[data-theme="webgl"] .lf-glass-fade-section::before,
+body[data-theme="webgl"] .lf-hero-stage::before,
+body[data-theme="webgl"] .lf-section-head {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 body[data-theme="tangerine-blob"] {
   /* Dark base — lets WebGL dot-matrix glow through */
   --page-bg-start: #0a0614;
@@ -1909,7 +1927,6 @@ body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
               </div>
               <div style="position:relative; padding:12px; background:#f0f0ef; border:0.5px solid rgba(0,0,0,0.1);">
                 <div style="font-family:var(--font-ui); font-size:9px; letter-spacing:0.08em; color:#6a727b; font-weight:700;">PORTFOLIO LINE OF CREDIT ...3291</div>
-                <div style="font-family:var(--font-display); font-size:22px; color:#344251; margin-top:8px;">$75,000.00</div>
               </div>
               <div style="position:absolute; left:0; right:0; bottom:0; height:48px; background:rgba(236,237,236,0.9); display:grid; grid-template-columns:repeat(5,1fr); align-items:center; text-align:center; font-family:var(--font-ui); font-size:7px; color:#7f888e;">
                 <span style="color:#ca4e42;">⌂<br>Accounts</span><span>↓<br>Deposit</span><span>↔<br>Pay &amp;<br>Transfer</span><span>◉<br>Explore</span><span>☰<br>Menu</span>
@@ -1952,7 +1969,6 @@ body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
               </div>
               <div style="position:relative; padding:13px; background:#d8d8d8; color:#4a4a4a;">
                 <div style="font-family:var(--font-ui); font-size:9px; letter-spacing:0.08em; font-weight:700;">PORTFOLIO LINE OF CREDIT ...3291</div>
-                <div style="font-family:var(--font-display); font-size:23px; margin-top:9px;">$75,000.00</div>
               </div>
               <div style="position:absolute; left:0; right:0; bottom:0; height:48px; background:rgba(48,48,48,0.92); display:grid; grid-template-columns:repeat(5,1fr); align-items:center; text-align:center; font-family:var(--font-ui); font-size:7px; color:#aaa;">
                 <span style="color:#d46643;">⌂<br>Accounts</span><span>↓<br>Deposit</span><span>↔<br>Pay &amp;<br>Transfer</span><span>◉<br>Explore</span><span>☰<br>Menu</span>
