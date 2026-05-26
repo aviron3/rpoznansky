@@ -1620,6 +1620,10 @@ body[data-theme="atmo-console"] {
   --dark-muted: rgba(118,210,182,0.55);
   --dark-soft: rgba(118,210,182,0.36);
 
+  /* Radius system: 4px · 12px · 24px · 40px · 9999px */
+  --radius-control: 4px;
+  --border-radius-lg: 12px;
+
   /* Red-coral accent */
   --accent: #E15045;
   --accent-warm: #f5ccc7;
@@ -1680,10 +1684,9 @@ body[data-theme="atmo-console"] {
 
 /* ── Atmo Console: Elevated Panel System ──────────────────────────────────── */
 
-/* Outer shell — elevated panel from spec:
-   border 1px #FFFFFF, shadow inset dark + outset white highlight */
+/* Outer shell — 24px per spec radius system */
 body[data-theme="atmo-console"] .lf-root-shell {
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   border: 1px solid #FFFFFF;
   box-shadow:
@@ -1691,11 +1694,11 @@ body[data-theme="atmo-console"] .lf-root-shell {
     rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
 }
 
-/* Main root — clean, no blur */
+/* Main root — 23px (1px inset from shell) */
 body[data-theme="atmo-console"] .lf-root {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-radius: 19px;
+  border-radius: 23px;
   border-color: #FFFFFF;
   box-shadow: none;
 }
@@ -1708,32 +1711,55 @@ body[data-theme="atmo-console"] .lf-glass-fade-section::before {
   opacity: 0.04;
 }
 
-/* ── Section panels — exact spec recipe ──────────────────────────────────── */
+/* ── Section panels — exact spec recipe, 12px radius ─────────────────────── */
 body[data-theme="atmo-console"] .lf-hero-stage,
 body[data-theme="atmo-console"] .lf-section-head,
 body[data-theme="atmo-console"] .lf-cf-wrap,
 body[data-theme="atmo-console"] .lf-glass-fade-section {
   border: 1px solid #FFFFFF;
+  border-radius: 12px;
   box-shadow:
     rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
     rgba(255, 255, 255, 0.8) 1px 1px 1px 0px;
 }
 
-/* Hero: remove the default bottom border, let the spec border take over */
+/* Hero: keep the spec border at the bottom edge */
 body[data-theme="atmo-console"] .lf-hero-stage {
   border-bottom-color: #FFFFFF;
 }
 
-/* Dark component cards */
+/* Dark component cards — 24px radius */
 body[data-theme="atmo-console"] .ui-frame,
-body[data-theme="atmo-console"] .lf-hnl-teaser-fig,
-body[data-theme="atmo-console"] .lf-modal-paper {
+body[data-theme="atmo-console"] .lf-hnl-teaser-fig {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.12);
   box-shadow:
     rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
     rgba(255, 255, 255, 0.08) 1px 1px 1px 0px;
+}
+
+/* Modal — 24px */
+body[data-theme="atmo-console"] .lf-modal-paper {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 1px 1px 2px 0px inset,
+    rgba(255, 255, 255, 0.08) 1px 1px 1px 0px;
+}
+
+/* Expanded case panel — 12px */
+body[data-theme="atmo-console"] .lf-cf-panel {
+  border-radius: 12px;
+}
+
+/* CV buttons — 4px (spec base control radius) */
+body[data-theme="atmo-console"] .lf-cv-btn,
+body[data-theme="atmo-console"] .lf-modal-close {
+  border-radius: 4px;
 }
 
 /* ── Section label mono text — high contrast dark on sandy ──────────────── */
@@ -1749,6 +1775,37 @@ body[data-theme="atmo-console"] .lf-cf-row .lf-mono,
 body[data-theme="atmo-console"] .lf-cf-row .lf-mono * {
   color: #504E4A !important;
   opacity: 1 !important;
+}
+
+/* ── Topbar — 12px elevated panel, matches section panels ───────────────── */
+body[data-theme="atmo-console"] .lf-topbar {
+  border-radius: 12px;
+  border: 1px solid #FFFFFF;
+  box-shadow:
+    rgba(0,0,0,0.4) 1px 1px 2px 0px inset,
+    rgba(255,255,255,0.8) 1px 1px 1px 0px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: var(--paper-strong);
+}
+body.is-scrolled[data-theme="atmo-console"] .lf-topbar {
+  background: var(--paper-strong);
+  border-color: #FFFFFF;
+  box-shadow:
+    rgba(0,0,0,0.4) 1px 1px 2px 0px inset,
+    rgba(255,255,255,0.8) 1px 1px 1px 0px;
+}
+
+/* ── Case file row dividers — white-spec border, consistent with panels ─── */
+body[data-theme="atmo-console"] .lf-cf-row {
+  border-bottom: 1px solid rgba(255,255,255,0.55);
+}
+body[data-theme="atmo-console"] .lf-cf-row:first-child {
+  border-top: none;
+}
+body[data-theme="atmo-console"] .lf-cf-row.lf-case-entry::after {
+  background: rgba(255,255,255,0.7);
+  opacity: 0.7;
 }
 
 </style>
