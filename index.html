@@ -2353,12 +2353,199 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
   opacity: 1 !important;
 }
 
+/* ── Wave Protocol ─────────────────────────────────────────────────────────── */
+body[data-theme="wave-protocol"] {
+  --paper: rgba(4, 8, 16, 0.95);
+  --paper-soft: rgba(7, 14, 26, 0.90);
+  --paper-strong: rgba(12, 22, 40, 0.96);
+  --ink: #ffffff;
+  --body-copy: rgba(255, 255, 255, 0.72);
+  --ink-muted: rgba(34, 211, 238, 0.58);
+  --ink-soft: rgba(255, 255, 255, 0.40);
+  --line: rgba(34, 211, 238, 0.13);
+  --line-strong: rgba(34, 211, 238, 0.25);
+  --dark-surface: rgba(4, 8, 16, 0.92);
+  --dark-surface-2: rgba(6, 12, 22, 0.94);
+  --dark-surface-3: rgba(8, 16, 30, 0.96);
+  --dark-line: rgba(34, 211, 238, 0.10);
+  --dark-text: #ffffff;
+  --dark-copy: rgba(255, 255, 255, 0.70);
+  --dark-muted: rgba(34, 211, 238, 0.50);
+  --accent: #22D3EE;
+  --accent-warm: rgba(34, 211, 238, 0.13);
+  --accent-wash: rgba(34, 211, 238, 0.07);
+  --accent-wash-soft: rgba(34, 211, 238, 0.035);
+  --page-bg-start: #040810;
+  --page-bg-end: #040810;
+  --page-glow: rgba(34, 211, 238, 0.08);
+  --footer-bg: #020508;
+  --footer-text: rgba(255, 255, 255, 0.68);
+  --footer-muted: rgba(34, 211, 238, 0.48);
+  --footer-low: rgba(34, 211, 238, 0.26);
+  --radius-control: 9999px;
+  --border-radius-lg: 24px;
+  --root-blur: 0px;
+  --root-saturate: 100%;
+  --root-shadow: 0 40px 120px rgba(0, 0, 0, 0.72);
+  --glass-border: rgba(34, 211, 238, 0.14);
+  --glass-border-strong: rgba(34, 211, 238, 0.26);
+  --glass-shell: linear-gradient(to bottom, rgba(34, 211, 238, 0.10), rgba(34, 211, 238, 0.03));
+  --glass-shadow: 0 28px 100px rgba(0, 0, 0, 0.56);
+  --glass-shadow-soft: 0 14px 44px rgba(0, 0, 0, 0.38);
+  --chooser-shadow: rgba(34, 211, 238, 0.28);
+  --brand-icon-filter: brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(160deg) brightness(1.1);
+  --font-body: 'Geist Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --font-meta: 'Geist Mono', 'JetBrains Mono', 'Courier New', monospace;
+  --font-display: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-ui: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-black: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Ambient layers off — WebGL canvas handles hero atmosphere */
+  --ambient-layer-1-opacity: 0;
+  --ambient-layer-2-opacity: 0;
+}
+
+/* Root shell: thin gradient cyan ring */
+body[data-theme="wave-protocol"] .lf-root-shell {
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 1px;
+  background: linear-gradient(to bottom, rgba(34,211,238,0.22), rgba(34,211,238,0.06));
+  box-shadow:
+    0 0 0 1px rgba(34,211,238,0.06) inset,
+    0 40px 120px rgba(0, 0, 0, 0.72),
+    0 0 50px rgba(34,211,238,0.03) inset;
+}
+
+body[data-theme="wave-protocol"] .lf-root {
+  border-radius: 27px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+}
+
+/* Wave-hero canvas — hidden globally, shown only in wave-protocol */
+.lf-wave-hero-canvas {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body[data-theme="wave-protocol"] .lf-wave-hero-canvas {
+  display: block;
+}
+
+/* Hero stage: deep dark canvas so the grid pops */
+body[data-theme="wave-protocol"] .lf-hero-stage {
+  background: #040810;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.12);
+}
+
+/* Suppress the default glass ::before overlay */
+body[data-theme="wave-protocol"] .lf-hero-stage::before {
+  display: none;
+}
+
+/* Sections below hero: flat dark panels with cyan hairlines */
+body[data-theme="wave-protocol"] .lf-section-head,
+body[data-theme="wave-protocol"] .lf-cf-wrap,
+body[data-theme="wave-protocol"] .lf-glass-fade-section {
+  background: rgba(4, 8, 16, 0.97);
+  border-top: 1px solid rgba(34, 211, 238, 0.09);
+}
+
+/* Hero headline: Geist 500 with cyan italic */
+body[data-theme="wave-protocol"] .lf-hero {
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+
+body[data-theme="wave-protocol"] .lf-hero .italic {
+  color: #22D3EE;
+  font-style: italic;
+}
+
+/* Hero content: frosted glass panel floating over the WebGL grid */
+body[data-theme="wave-protocol"] .lf-hero-content {
+  background: rgba(4, 8, 16, 0.42);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  border: 1px solid rgba(34, 211, 238, 0.12);
+  border-radius: 0;
+  padding: 2rem 2.25rem 2rem;
+  width: fit-content;
+  max-width: min(680px, 100%);
+}
+
+/* Kicker label */
+body[data-theme="wave-protocol"] .lf-hero-kicker {
+  color: rgba(34, 211, 238, 0.68);
+  letter-spacing: 0.10em;
+}
+
+/* Topbar: semi-transparent frosted */
+body[data-theme="wave-protocol"] .lf-topbar {
+  background: rgba(4, 8, 16, 0.55);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.08);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+
+body.is-scrolled[data-theme="wave-protocol"] .lf-topbar {
+  background: rgba(4, 8, 16, 0.90);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.18);
+}
+
+/* CV toolbar & modal close-bar: dark frosted */
+body[data-theme="wave-protocol"] .lf-cv-toolbar,
+body[data-theme="wave-protocol"] .lf-modal-close-bar {
+  background: rgba(4, 8, 16, 0.82);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.14);
+}
+
+/* Pill shapes: buttons and modal close */
+body[data-theme="wave-protocol"] .lf-cv-btn,
+body[data-theme="wave-protocol"] .lf-modal-close { border-radius: 9999px; }
+
+/* Chart fig and UI mockup: 9999px would oval/pill them — cap at card radius */
+body[data-theme="wave-protocol"] .lf-hnl-teaser-fig,
+body[data-theme="wave-protocol"] .ui-frame { border-radius: 24px; }
+
+/* Modal paper */
+body[data-theme="wave-protocol"] .lf-modal-paper { border-radius: 24px; }
+
+/* Section labels: cyan */
+body[data-theme="wave-protocol"] .lf-section-head .lf-mono,
+body[data-theme="wave-protocol"] .lf-section-head .lf-mono * {
+  color: rgba(34, 211, 238, 0.62) !important;
+  opacity: 1 !important;
+}
+
+/* Case row mono metadata */
+body[data-theme="wave-protocol"] .lf-cf-row .lf-mono,
+body[data-theme="wave-protocol"] .lf-cf-row .lf-mono * {
+  color: rgba(34, 211, 238, 0.50) !important;
+  opacity: 1 !important;
+}
+
+/* Nav links hover */
+body[data-theme="wave-protocol"] .lf-link-top:hover,
+body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
+  color: #22D3EE;
+}
+
 </style>
 </head>
 <!-- Fonts for Atmospheric Data Console theme -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" id="lf-atmo-fonts">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" id="lf-wave-fonts">
 <body data-theme="editorial-ivory" data-motion="expressive">
 
 <!-- WebGL Background (Additive Wireframe) -->
@@ -2396,6 +2583,7 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
 <div class="lf-grain"></div>
 
 <div class="lf-hero-stage lf-snap-section" id="lf-hero-stage">
+  <canvas id="wave-hero-canvas" class="lf-wave-hero-canvas" aria-hidden="true"></canvas>
   <div class="lf-hero-content">
     <div class="lf-mono lf-hero-kicker">01 — what i do</div>
     <div class="lf-hero">
@@ -3786,7 +3974,8 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
     { id: 'tangerine-blob', label: 'Tangerine Blob', tone: 'playful' },
     { id: 'atmo-console', label: 'Warm Dispatch', tone: 'technical' },
     { id: 'net-uplink', label: 'Amber Uplink', tone: 'technical' },
-    { id: 'quantum-core', label: 'Cold Brief', tone: 'technical' }
+    { id: 'quantum-core', label: 'Cold Brief', tone: 'technical' },
+    { id: 'wave-protocol', label: 'Cyan Horizon', tone: 'technical' }
   ];
   var easterTheme = { id: 'afterimage-signal', label: 'Afterimage Radio', tone: 'easter egg' };
   var currentThemeIndex = 0;
@@ -3795,6 +3984,7 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
   var webglCanvas = document.getElementById('webgl-canvas');
   var webglController = null;
   var blobController = null;
+  var waveHeroController = null;
   var heroStage = document.getElementById('lf-hero-stage');
   var caseHead = document.getElementById('lf-case-head');
   var caseStage = document.getElementById('lf-case-stage');
@@ -4075,6 +4265,136 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
     };
   }
 
+  function initWaveHeroGL() {
+    var canvas = document.getElementById('wave-hero-canvas');
+    var stage = document.getElementById('lf-hero-stage');
+    if (!canvas || !stage || !window.THREE) return null;
+
+    var THREE = window.THREE;
+    var renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setClearColor(0x000000, 0);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(56, 1, 0.1, 500);
+    camera.position.set(0, 30, 46);
+    camera.lookAt(0, 0, -62);
+
+    var geometry = new THREE.PlaneGeometry(260, 340, 1, 1);
+    geometry.rotateX(-Math.PI / 2);
+    geometry.translate(0, 0, -72);
+
+    var material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      uniforms: {
+        uTime:    { value: 0 },
+        uColor:   { value: new THREE.Color(0x22D3EE) },
+        uPointer: { value: new THREE.Vector2(0, 0) }
+      },
+      vertexShader: [
+        'varying vec3 vWorld;',
+        'void main() {',
+        '  vec4 world = modelMatrix * vec4(position, 1.0);',
+        '  vWorld = world.xyz;',
+        '  gl_Position = projectionMatrix * viewMatrix * world;',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'precision highp float;',
+        'uniform float uTime;',
+        'uniform vec3 uColor;',
+        'uniform vec2 uPointer;',
+        'varying vec3 vWorld;',
+        'float gridLine(float value, float spacing, float width) {',
+        '  float cell = abs(fract(value / spacing - 0.5) - 0.5);',
+        '  return 1.0 - smoothstep(0.0, width, cell);',
+        '}',
+        'void main() {',
+        /* subtle pointer drift applied to grid coordinates */
+        '  vec2 drift = vec2(uPointer.x * 1.4, uPointer.y * 0.7);',
+        '  vec2 coord = vec2(vWorld.x, vWorld.z) + drift;',
+        /* fine grid at 14 world-units, major at 56 */
+        '  float fine  = max(gridLine(coord.x, 14.0, 0.016), gridLine(coord.y, 14.0, 0.016));',
+        '  float major = max(gridLine(coord.x, 56.0, 0.012), gridLine(coord.y, 56.0, 0.012));',
+        /* depth fades: horizon, near-clip, side-clip */
+        '  float horizonFade = smoothstep(-158.0, -22.0, vWorld.z);',
+        '  float nearFade    = 1.0 - smoothstep(30.0, 72.0, vWorld.z);',
+        '  float sideFade    = 1.0 - smoothstep(30.0, 106.0, abs(vWorld.x));',
+        '  float depth = horizonFade * nearFade * sideFade;',
+        /* breathing pulse: slow 0.28 rad/s sine */
+        '  float pulse = 0.60 + 0.12 * sin(uTime * 0.28);',
+        '  float line  = max(fine * 0.28, major * 0.92);',
+        '  float alpha = line * depth * pulse;',
+        /* major lines are slightly brighter */
+        '  vec3 color = uColor * (0.68 + major * 0.58);',
+        '  gl_FragColor = vec4(color, alpha);',
+        '}'
+      ].join('\n')
+    });
+
+    var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    var start = performance.now();
+    var running = true;
+
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+      var w = Math.max(1, stage.offsetWidth);
+      var h = Math.max(1, stage.offsetHeight);
+      renderer.setPixelRatio(dpr);
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+
+    function onPointerMove(event) {
+      pointer.tx = (event.clientX / Math.max(1, window.innerWidth) - 0.5) * 2;
+      pointer.ty = (event.clientY / Math.max(1, window.innerHeight) - 0.5) * 2;
+    }
+
+    function render(now) {
+      if (!running) return;
+      var seconds = (now - start) * 0.001;
+      pointer.x += (pointer.tx - pointer.x) * 0.038;
+      pointer.y += (pointer.ty - pointer.y) * 0.038;
+
+      material.uniforms.uTime.value = seconds;
+      material.uniforms.uPointer.value.set(pointer.x, pointer.y);
+
+      /* subtle camera drift — keeps the effect calm rather than seasick */
+      camera.position.x = pointer.x * 1.8;
+      camera.position.y = 30 + pointer.y * 0.9;
+      camera.lookAt(pointer.x * 2.2, 0, -62 + pointer.y * 1.8);
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(render);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+    requestAnimationFrame(render);
+
+    return {
+      destroy: function() {
+        running = false;
+        window.removeEventListener('resize', resize);
+        window.removeEventListener('pointermove', onPointerMove);
+        geometry.dispose();
+        material.dispose();
+        renderer.dispose();
+      }
+    };
+  }
+
   function hasSessionStorage() {
     try {
       return typeof sessionStorage !== 'undefined';
@@ -4132,20 +4452,29 @@ body[data-theme="quantum-core"] .lf-cf-row .lf-mono * {
     if (shouldPersist && hasSessionStorage()) {
       sessionStorage.setItem(themeSessionKey, theme.id);
     }
-    // WebGL controller management — swap between grid and dot-matrix
+    // WebGL controller management — swap between grid, dot-matrix, and wave-hero
     if (theme.id === 'tangerine-blob') {
       if (webglController) { webglController.destroy(); webglController = null; }
+      if (waveHeroController) { waveHeroController.destroy(); waveHeroController = null; }
       if (!blobController) {
         try { blobController = initBlobDots(); } catch(e) { blobController = null; }
       }
     } else if (theme.id === 'webgl') {
       if (blobController) { blobController.destroy(); blobController = null; }
+      if (waveHeroController) { waveHeroController.destroy(); waveHeroController = null; }
       if (!webglController) {
         try { webglController = initWebGLGrid(); } catch(e) { webglController = null; document.body.classList.remove('webgl-ready'); }
+      }
+    } else if (theme.id === 'wave-protocol') {
+      if (blobController) { blobController.destroy(); blobController = null; }
+      if (webglController) { webglController.destroy(); webglController = null; }
+      if (!waveHeroController) {
+        try { waveHeroController = initWaveHeroGL(); } catch(e) { waveHeroController = null; }
       }
     } else {
       if (blobController) { blobController.destroy(); blobController = null; }
       if (webglController) { webglController.destroy(); webglController = null; }
+      if (waveHeroController) { waveHeroController.destroy(); waveHeroController = null; }
     }
   }
 
