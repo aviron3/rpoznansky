@@ -1807,10 +1807,16 @@ body[data-theme="atmo-console"] .lf-cf-panel {
   border-radius: 12px;
 }
 
-/* CV buttons — 4px (spec base control radius) */
+/* CV buttons — 4px (spec base control radius) + warm text instead of teal */
 body[data-theme="atmo-console"] .lf-cv-btn,
 body[data-theme="atmo-console"] .lf-modal-close {
   border-radius: 4px;
+}
+body[data-theme="atmo-console"] .lf-cv-btn:not(.lf-cv-btn-ghost) {
+  color: var(--paper-strong);
+}
+body[data-theme="atmo-console"] .lf-cv-btn:not(.lf-cv-btn-ghost):hover {
+  color: #ffffff;
 }
 
 /* ── Section label mono text — high contrast dark on sandy ──────────────── */
