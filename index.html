@@ -1796,10 +1796,12 @@ body[data-theme="atmo-console"] .lf-modal {
     padding: calc(60px + 20px) 0.75rem 0.75rem !important;
   }
 }
-/* Toolbar: transparent — buttons float above content, no competing bar */
+/* Toolbar: frosted glass — sandy tint + blur so scrolled content reads cleanly */
 body[data-theme="atmo-console"] .lf-cv-toolbar {
-  background: transparent;
-  border-bottom-color: rgba(255,255,255,0.55);
+  background: rgba(220, 217, 206, 0.72);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid rgba(104, 102, 96, 0.18);
 }
 
 /* Expanded case panel — 12px */
