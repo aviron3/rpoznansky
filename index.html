@@ -2377,8 +2377,8 @@ body[data-theme="wave-protocol"] {
   --dark-copy: rgba(255, 255, 255, 0.70);
   --dark-muted: rgba(34, 211, 238, 0.50);
   --accent: #22D3EE;
-  --accent-warm: rgba(34, 211, 238, 0.13);
-  --accent-wash: rgba(34, 211, 238, 0.07);
+  --accent-warm: rgba(34, 211, 238, 0.72);  /* text use: readable cyan */
+  --accent-wash: rgba(34, 211, 238, 0.07);  /* surface/bg tint only */
   --accent-wash-soft: rgba(34, 211, 238, 0.035);
   --page-bg-start: #040810;
   --page-bg-end: #040810;
@@ -2523,6 +2523,18 @@ body[data-theme="wave-protocol"] .ui-frame { border-radius: 0; }
 
 /* Modal paper */
 body[data-theme="wave-protocol"] .lf-modal-paper { border-radius: 0; }
+
+/* Pull quotes: readable on dark surface */
+body[data-theme="wave-protocol"] .lf-cf-pull {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(34, 211, 238, 0.06);
+  border-left-color: #22D3EE;
+}
+
+/* Emphasized text in case bodies */
+body[data-theme="wave-protocol"] .lf-cf-body em {
+  color: #22D3EE;
+}
 
 /* Section labels: cyan */
 body[data-theme="wave-protocol"] .lf-section-head .lf-mono,
