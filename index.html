@@ -4944,10 +4944,11 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 }
 .jag-apple { width:22px; height:22px; display:flex; align-items:center; justify-content:center; font-size:15px; margin-right:4px; flex-shrink:0; }
 .jag-mi {
-  padding: 1px 7px; font-size: 12px; font-weight: 700; color: #000;
+  padding: 2px 8px; font-size: 12px; font-weight: 500; color: #000;
   cursor: default; border-radius: 3px; height: 20px;
   display: flex; align-items: center; white-space: nowrap; flex-shrink: 0;
 }
+.jag-mi-app { font-weight: 800; }
 .jag-mi:hover { background: linear-gradient(to bottom,#3878d8,#1a58b8); color:#fff; }
 .jag-mbar-r { margin-left:auto; display:flex; align-items:center; gap:8px; font-size:11px; color:#333; white-space:nowrap; flex-shrink:0; padding-left:8px; }
 .jag-mi-hide { display:none; }
@@ -5101,7 +5102,7 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 .jag-infobar {
   background:linear-gradient(to bottom,#e8e8e8,#d8d8d8);
   border-bottom:1px solid #c0c0c0;
-  padding:5px 12px; display:flex; align-items:center; gap:12px;
+  padding:4px 10px; display:flex; align-items:center; gap:10px;
   font-size:11px; color:#444; flex-wrap:wrap; flex-shrink:0;
 }
 .jag-chip { display:flex; align-items:center; gap:3px; color:#3060b0; }
@@ -5112,8 +5113,8 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 /* ── Case list ── */
 .jag-clist { display:flex; flex-direction:column; }
 .jag-crow {
-  display:grid; grid-template-columns:24px 1fr auto auto; gap:8px;
-  align-items:center; padding:7px 12px;
+  display:grid; grid-template-columns:22px 1fr auto auto; gap:6px;
+  align-items:center; padding:6px 10px;
   border-bottom:1px solid #ddd; background:#f8f8f8; cursor:pointer;
 }
 .jag-crow:nth-child(even) { background:#f0f0f0; }
@@ -5133,26 +5134,31 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 
 /* ── Detail panel ── */
 .jag-detail {
-  background:linear-gradient(to bottom,#f8f8f8,#f0f0f0);
-  border-left:1px solid #c8c8c8;
-  width:200px; min-width:200px; padding:12px 11px;
-  display:flex; flex-direction:column; gap:10px;
+  background:linear-gradient(to bottom,#f4f4f6,#ededef);
+  border-left:2px solid #b8b8c8;
+  width:178px; min-width:178px; padding:10px 9px;
+  display:flex; flex-direction:column; gap:7px;
   overflow-y:auto; font-size:11px; flex-shrink:0;
 }
 @media (max-width:820px) { .jag-detail { display:none; } }
-.jag-dhead { text-align:center; padding-bottom:10px; border-bottom:1px solid #d8d8d8; }
-.jag-davatar { width:48px; height:48px; border-radius:11px; background:linear-gradient(135deg,#b8d8f8,#6090d8); border:2px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.2); margin:0 auto 7px; display:flex; align-items:center; justify-content:center; font-size:24px; }
-.jag-dname { font-size:12px; font-weight:bold; color:#111; margin-bottom:2px; }
+.jag-dhead { text-align:center; padding-bottom:9px; border-bottom:1px solid #d0d0d8; }
+.jag-davatar { width:40px; height:40px; border-radius:9px; background:linear-gradient(135deg,#b8d8f8,#6090d8); border:2px solid #fff; box-shadow:0 2px 6px rgba(0,0,0,.2); margin:0 auto 6px; display:flex; align-items:center; justify-content:center; font-size:20px; }
+.jag-dname { font-size:11px; font-weight:bold; color:#111; margin-bottom:1px; }
 .jag-dtitle { font-size:10px; color:#666; }
-.jag-dlabel { font-size:10px; font-weight:bold; color:#888; text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px; }
-.jag-drow { display:flex; justify-content:space-between; padding:2px 0; font-size:11px; }
-.jag-dk { color:#666; } .jag-dv { color:#222; font-weight:bold; }
-.jag-dtag { display:inline-block; padding:2px 6px; border-radius:10px; background:linear-gradient(to bottom,#d8eaff,#c0d8ff); border:1px solid #88aadd; color:#2048a0; font-size:10px; margin:2px 2px 0 0; }
+.jag-dlabel { font-size:9px; font-weight:bold; color:#7a7a8a; text-transform:uppercase; letter-spacing:.1em; margin-bottom:2px; padding-bottom:2px; border-bottom:1px solid #d8d8e0; }
+.jag-drow { display:grid; grid-template-columns:1fr auto; padding:1px 0; font-size:10px; border-bottom:1px solid #e8e8ec; }
+.jag-dk { color:#666; } .jag-dv { color:#111; font-weight:600; text-align:right; }
 
-/* ── Skills (real categories) ── */
-.jag-skill-cat { margin-bottom:6px; }
-.jag-skill-head { font-size:10px; font-weight:bold; color:#3060b0; margin-bottom:3px; }
-.jag-skill-items { font-size:10px; color:#444; line-height:1.7; }
+/* ── Skills inspector grid ── */
+.jag-skill-grid { display:grid; grid-template-columns:46px 1fr; gap:2px 5px; align-items:baseline; }
+.jag-sk { font-size:9px; font-weight:700; color:#8a8a9a; text-transform:uppercase; letter-spacing:.05em; padding-top:2px; }
+.jag-sv { font-size:10px; color:#333; line-height:1.5; }
+
+/* ── Methods inline list ── */
+.jag-method-list { font-size:10px; color:#2a50a0; line-height:1.6; }
+
+/* ── (legacy, unused) ── */
+.jag-skill-cat {} .jag-skill-head {} .jag-skill-items {}
 
 /* ── Status bar ── */
 .jag-statusbar {
@@ -5183,7 +5189,7 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
   <!-- Menu bar -->
   <div class="jag-menubar">
     <div class="jag-apple">🍎</div>
-    <div class="jag-mi" style="font-weight:800">Portfolio</div>
+    <div class="jag-mi jag-mi-app">Portfolio</div>
     <div class="jag-mi jag-mi-opt">File</div>
     <div class="jag-mi jag-mi-opt">Edit</div>
     <div class="jag-mi jag-mi-opt">View</div>
@@ -5211,8 +5217,8 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 
       <!-- Toolbar -->
       <div class="jag-toolbar">
-        <button class="jag-tbtn jag-tbtn-opt">◀</button>
-        <button class="jag-tbtn jag-tbtn-opt">▶</button>
+        <button class="jag-tbtn jag-tbtn-opt" style="padding:0 9px">◀</button>
+        <button class="jag-tbtn jag-tbtn-opt" style="padding:0 9px">▶</button>
         <div class="jag-tsep jag-tsep-opt"></div>
         <button class="jag-tbtn jag-tbtn-aq">📄 CV</button>
         <button class="jag-tbtn jag-tbtn-opt">✉ Email</button>
@@ -5331,28 +5337,20 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
           </div>
 
           <div>
-            <div class="jag-dlabel">Skills — Research</div>
-            <div class="jag-skill-items">Usability testing (n≈400+)<br>Ethnography &amp; JTBD<br>Concept testing<br>Survey design<br>SPSS, R<br>Behavioral analytics</div>
-          </div>
-          <div>
-            <div class="jag-dlabel">Skills — Design</div>
-            <div class="jag-skill-items">Design thinking<br>Figma, Sketch<br>Adobe XD, Axure<br>Photography</div>
-          </div>
-          <div>
-            <div class="jag-dlabel">Skills — Strategy</div>
-            <div class="jag-skill-items">Roadmapping<br>Experimentation<br>Design sprints<br>Workshop facilitation</div>
+            <div class="jag-dlabel">Skills</div>
+            <div class="jag-skill-grid">
+              <span class="jag-sk">Research</span>
+              <span class="jag-sv">Usability testing · Ethnography · Concept testing · Survey design · SPSS, R · Behavioral analytics</span>
+              <span class="jag-sk">Design</span>
+              <span class="jag-sv">Design thinking · Figma · Axure · Photography</span>
+              <span class="jag-sk">Strategy</span>
+              <span class="jag-sv">Roadmapping · Design sprints · Workshop facilitation</span>
+            </div>
           </div>
 
           <div>
             <div class="jag-dlabel">Methods</div>
-            <div style="margin-top:3px">
-              <span class="jag-dtag">Mixed methods</span>
-              <span class="jag-dtag">Usability testing</span>
-              <span class="jag-dtag">Heuristic audit</span>
-              <span class="jag-dtag">Behavioral analytics</span>
-              <span class="jag-dtag">Concept evaluation</span>
-              <span class="jag-dtag">Journey mapping</span>
-            </div>
+            <div class="jag-method-list">Mixed methods · Usability testing · Heuristic audit · Behavioral analytics · Concept evaluation · Journey mapping</div>
           </div>
 
           <div>
