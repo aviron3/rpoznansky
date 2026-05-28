@@ -3610,7 +3610,7 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
 
 <div class="lf-site-subfooter">
   <div class="lf-mono">© 2026 ron poznansky</div>
-  <div class="lf-mono lf-footer-note">footnote: built with help from Claude + ChatGPT on <span id="lf-mac-egg" title="">Mac</span></div>
+  <div class="lf-mono lf-footer-note">footnote: built with help from Claude + ChatGPT on <span id="lf-mac-egg" title="">Mac</span> · originally drafted on <span id="lf-newton-egg" title="">Newton</span></div>
 </div>
 
 <!-- CV MODAL -->
@@ -5431,6 +5431,430 @@ body[data-theme="wave-protocol"] .lf-link-top:focus-visible {
   closeBtn.addEventListener('click', closeJaguar);
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && overlay.classList.contains('jag-open')) closeJaguar();
+  });
+})();
+</script>
+
+<!-- ── Easter egg: Newton OS concept ─────────────────────────────────────── -->
+<div id="lf-newton-overlay" aria-hidden="true" role="dialog" aria-label="Newton OS concept">
+<style>
+#lf-newton-overlay {
+  position:fixed; inset:0; z-index:99998;
+  display:none; opacity:0; transition:opacity .3s ease;
+  align-items:center; justify-content:center;
+}
+#lf-newton-overlay.nwt-open  { display:flex; }
+#lf-newton-overlay.nwt-visible { opacity:1; }
+#lf-newton-overlay *, #lf-newton-overlay *::before, #lf-newton-overlay *::after {
+  box-sizing:border-box; margin:0; padding:0;
+  font-family:'Lucida Grande','Geneva','Trebuchet MS',Helvetica,sans-serif;
+}
+#lf-newton-overlay button { cursor:pointer; border:none; background:none; }
+
+/* ── Backdrop ── */
+.nwt-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 40% 30%, #d4c88a 0%, #a89250 40%, #60500c 100%);
+  display:flex; align-items:center; justify-content:center;
+  padding:16px;
+}
+
+/* ── Dismiss × outside device ── */
+.nwt-x {
+  position:absolute; top:14px; right:16px;
+  width:28px; height:28px; border-radius:50%;
+  background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.2)!important;
+  color:rgba(255,255,255,.85); font-size:15px; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2; transition:background .15s;
+}
+.nwt-x:hover { background:rgba(180,20,20,.7)!important; color:#fff; }
+
+/* ── Device shell ── */
+.nwt-device {
+  position:relative;
+  width:min(330px, calc(100vw - 32px));
+  background:linear-gradient(155deg,#cec8b8 0%,#b8b2a2 45%,#a8a298 60%,#b4aea0 100%);
+  border-radius:22px 22px 14px 14px;
+  box-shadow:
+    0 0 0 1px #5a5448,
+    0 3px 0 #9a9488,
+    0 8px 30px rgba(0,0,0,.6),
+    0 24px 70px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.22);
+  padding:12px 10px 10px;
+  display:flex; flex-direction:column; gap:7px;
+}
+/* power LED */
+.nwt-device::before {
+  content:''; position:absolute; top:9px; right:14px;
+  width:5px; height:5px; border-radius:50%;
+  background:radial-gradient(circle at 38% 33%,#90ff70,#28b000);
+  box-shadow:0 0 5px rgba(50,200,0,.7);
+}
+
+/* ── Screen bezel ── */
+.nwt-bezel {
+  background:#302e28; border-radius:10px 10px 6px 6px;
+  padding:3px 3px 3px;
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.85), inset 0 0 0 1px #1a1810;
+  display:flex; flex-direction:column;
+}
+
+/* ── Screen surface ── */
+.nwt-screen {
+  background:#e0dcc6;
+  border-radius:8px 8px 4px 4px;
+  display:flex; flex-direction:column; overflow:hidden;
+  height:min(498px, calc(100dvh - 130px));
+}
+
+/* ── Status bar ── */
+.nwt-status {
+  flex-shrink:0; height:18px;
+  background:linear-gradient(to bottom,#ccc8b4,#bab6a2);
+  border-bottom:1px solid #8a8474;
+  display:flex; align-items:center; padding:0 8px; gap:0;
+  font-size:10px; font-weight:600; color:#2a2418; overflow:hidden;
+}
+.nwt-s-logo { font-size:12px; margin-right:5px; flex-shrink:0; }
+.nwt-s-time { flex:1; text-align:center; font-size:10px; white-space:nowrap; overflow:hidden; }
+.nwt-batt { display:flex; align-items:center; gap:1px; flex-shrink:0; }
+.nwt-bc { width:4px; height:8px; background:#2a2418; border-radius:1px; }
+.nwt-bc.e { background:transparent; border:1px solid #888; }
+.nwt-bcap { width:2px; height:4px; background:#2a2418; border-radius:0 1px 1px 0; margin-left:1px; }
+
+/* ── Book header ── */
+.nwt-book-hd {
+  flex-shrink:0;
+  background:linear-gradient(to bottom,#d4d0bc,#c8c4b0);
+  border-bottom:2px solid #1a1a10;
+  padding:5px 10px 4px;
+  display:flex; align-items:baseline; gap:6px;
+}
+.nwt-book-name { font-size:12px; font-weight:800; color:#1a1a10; text-transform:uppercase; letter-spacing:.04em; }
+.nwt-book-sub  { font-size:10px; color:#686050; }
+
+/* ── Tab bar ── */
+.nwt-tabs {
+  flex-shrink:0;
+  background:#c0baa8; border-bottom:2px solid #1a1a10;
+  display:flex; align-items:flex-end; padding:0 8px; gap:3px;
+}
+.nwt-tab {
+  padding:4px 10px 3px; font-size:10px; font-weight:700;
+  border:2px solid #1a1a10!important; border-bottom:none!important;
+  border-radius:4px 4px 0 0;
+  background:#aca89a; color:#3a3428; flex-shrink:0; white-space:nowrap;
+  transition:background .1s;
+}
+.nwt-tab:hover { background:#bcb8aa; }
+.nwt-tab.nwt-ta {
+  background:#e0dcc6; color:#1a1a10;
+  margin-bottom:-2px; padding-bottom:5px;
+}
+
+/* ── Scrollable content ── */
+.nwt-content {
+  flex:1; overflow-y:auto; background:#e0dcc6; position:relative; min-height:0;
+}
+.nwt-content::-webkit-scrollbar { width:7px; }
+.nwt-content::-webkit-scrollbar-track { background:#d0ccb8; }
+.nwt-content::-webkit-scrollbar-thumb {
+  background:#8a8474; border-radius:3px; border:1px solid #6a6454;
+}
+
+/* Views: hidden by default, shown with .nwt-active */
+.nwt-view { display:none; padding:12px 11px 16px; }
+.nwt-view.nwt-active { display:block; }
+
+/* ── Notes / Overview ── */
+.nwt-paper {
+  background:#f0ece0; border:1px solid #aaa898; border-radius:2px;
+  padding:10px 10px 8px; margin-bottom:10px;
+  box-shadow:1px 1px 4px rgba(0,0,0,.12);
+  position:relative;
+}
+.nwt-paper::after {
+  content:''; position:absolute; top:0; left:18px; right:18px; height:1px;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent 4px,#c8c4b0 4px,#c8c4b0 5px);
+}
+.nwt-plabel { font-size:9px; font-weight:700; color:#6a6050; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px; }
+.nwt-phead  { font-size:14px; font-weight:800; color:#1a1a10; line-height:1.2; margin-bottom:8px; }
+.nwt-pbody  { font-size:11px; line-height:1.65; color:#2a2418; }
+.nwt-rule   { height:1px; background:#b8b4a4; margin:10px 0; }
+.nwt-scrawl { font-size:12px; color:#3a6020; font-style:italic; opacity:.7; font-family:Georgia,'Times New Roman',serif; }
+
+.nwt-grid2 {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:1px; background:#aaa898; border:1px solid #aaa898; margin-bottom:10px;
+}
+.nwt-cell { background:#e8e4d4; padding:6px 8px; }
+.nwt-ck { font-size:9px; font-weight:700; color:#686050; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1px; }
+.nwt-cv { font-size:12px; font-weight:800; color:#1a1a10; }
+
+/* ── Cases ── */
+.nwt-case {
+  display:flex; align-items:flex-start; gap:8px;
+  padding:7px 0; border-bottom:1px solid #c4c0b0;
+}
+.nwt-case:last-child { border-bottom:none; }
+.nwt-cpin {
+  width:17px; height:17px; flex-shrink:0; margin-top:2px;
+  background:#d0c8b6; border:1.5px solid #8a8474; border-radius:2px;
+  display:flex; align-items:center; justify-content:center; font-size:9px;
+}
+.nwt-ctitle { font-size:11px; font-weight:700; color:#1a1a10; line-height:1.3; margin-bottom:2px; }
+.nwt-cmeta  { font-size:10px; color:#686050; }
+
+/* ── Skills ── */
+.nwt-scat { margin-bottom:11px; }
+.nwt-shead {
+  font-size:10px; font-weight:800; color:#1a1a10; text-transform:uppercase; letter-spacing:.1em;
+  padding:2px 0 4px; border-bottom:2px solid #1a1a10; margin-bottom:6px;
+}
+.nwt-sitems { display:flex; flex-wrap:wrap; gap:4px 5px; }
+.nwt-si {
+  padding:2px 8px; border:1.5px solid #6a6454; border-radius:3px;
+  background:#ece8d8; font-size:10px; color:#2a2418;
+}
+
+/* ── Names / Contact ── */
+.nwt-card {
+  background:#f0ece0; border:1px solid #aaa898; border-radius:2px;
+  padding:12px 10px 10px; margin-bottom:8px;
+  box-shadow:1px 1px 4px rgba(0,0,0,.12);
+}
+.nwt-cname { font-size:14px; font-weight:800; color:#1a1a10; margin-bottom:2px; }
+.nwt-crole { font-size:11px; color:#686050; margin-bottom:9px; }
+.nwt-crow {
+  display:flex; align-items:center; gap:8px;
+  padding:5px 0; border-top:1px solid #d4d0c0;
+  font-size:11px; color:#1a3060;
+}
+.nwt-cico { font-size:12px; flex-shrink:0; }
+
+/* ── Bottom toolbar ── */
+.nwt-toolbar {
+  flex-shrink:0; height:30px;
+  background:linear-gradient(to bottom,#cac6b2,#bab6a2);
+  border-top:2px solid #8a8474;
+  display:flex; align-items:center; justify-content:space-around; padding:0 8px;
+}
+.nwt-tool {
+  width:24px; height:22px; border-radius:4px;
+  background:linear-gradient(to bottom,#dedad0,#c8c4b2)!important;
+  border:1.5px solid #6a6454!important;
+  display:flex; align-items:center; justify-content:center; font-size:12px;
+  box-shadow:0 1px 0 rgba(255,255,255,.45) inset,0 1px 2px rgba(0,0,0,.18);
+}
+.nwt-tool:active { background:linear-gradient(to bottom,#c0bcac,#d4d0bc)!important; }
+.nwt-tool-cl { background:linear-gradient(to bottom,#e8d0d0,#d0b4b4)!important; border-color:#a05050!important; }
+
+/* ── Hardware stylus bar ── */
+.nwt-hw {
+  background:linear-gradient(to bottom,#a4a098,#969088);
+  border-radius:0 0 10px 10px; height:16px;
+  display:flex; align-items:center; justify-content:center;
+  border-top:1px solid #6a6454;
+}
+.nwt-hw::before {
+  content:''; width:56px; height:4px;
+  background:#6a6454; border-radius:2px;
+}
+
+/* ── Responsive ── */
+@media (max-width:380px) {
+  .nwt-bg { padding:8px; }
+  .nwt-tab { padding:4px 7px 3px; font-size:9px; }
+  .nwt-device { padding:10px 8px 8px; }
+}
+@media (max-height:600px) {
+  .nwt-screen { height:min(420px, calc(100dvh - 110px)); }
+  .nwt-bg { align-items:flex-start; overflow-y:auto; padding-top:8px; }
+}
+</style>
+
+<div class="nwt-bg">
+  <button class="nwt-x" id="nwt-close" title="Close — return to site">×</button>
+
+  <div class="nwt-device">
+    <div class="nwt-bezel">
+      <div class="nwt-screen">
+
+        <!-- Status bar -->
+        <div class="nwt-status">
+          <span class="nwt-s-logo">✦</span>
+          <span class="nwt-s-time" id="nwt-clock"></span>
+          <div class="nwt-batt">
+            <div class="nwt-bc"></div>
+            <div class="nwt-bc"></div>
+            <div class="nwt-bc"></div>
+            <div class="nwt-bc e"></div>
+            <div class="nwt-bcap"></div>
+          </div>
+        </div>
+
+        <!-- Book header -->
+        <div class="nwt-book-hd">
+          <span class="nwt-book-name">Poznansky</span>
+          <span class="nwt-book-sub">UX Researcher · SF</span>
+        </div>
+
+        <!-- Tabs -->
+        <div class="nwt-tabs">
+          <button class="nwt-tab nwt-ta" data-nwt="notes">Notes</button>
+          <button class="nwt-tab" data-nwt="cases">Cases</button>
+          <button class="nwt-tab" data-nwt="skills">Skills</button>
+          <button class="nwt-tab" data-nwt="names">Names</button>
+        </div>
+
+        <!-- Content -->
+        <div class="nwt-content">
+
+          <!-- Notes -->
+          <div class="nwt-view nwt-active" id="nwt-view-notes">
+            <div class="nwt-paper">
+              <div class="nwt-plabel">Overview · Unfiled Notes</div>
+              <div class="nwt-phead">I observe how people interact with systems.</div>
+              <div class="nwt-pbody">Hello, I'm Ron Poznansky. Ten years of mixed-methods research across banks, hospitals, and enterprise platforms. Currently writing a thesis on transit at SFSU. Based in SF.</div>
+              <div class="nwt-rule"></div>
+              <div class="nwt-scrawl">✎ "Egg Freckles"</div>
+            </div>
+            <div class="nwt-grid2">
+              <div class="nwt-cell"><div class="nwt-ck">Experience</div><div class="nwt-cv">10 yrs</div></div>
+              <div class="nwt-cell"><div class="nwt-ck">Cases</div><div class="nwt-cv">7 entries</div></div>
+              <div class="nwt-cell"><div class="nwt-ck">Location</div><div class="nwt-cv">SF, CA</div></div>
+              <div class="nwt-cell"><div class="nwt-ck">Thesis</div><div class="nwt-cv">SFSU transit</div></div>
+            </div>
+          </div>
+
+          <!-- Cases -->
+          <div class="nwt-view" id="nwt-view-cases">
+            <div class="nwt-case"><div class="nwt-cpin">🏧</div><div><div class="nwt-ctitle">ATM behavior in a post-cash economy</div><div class="nwt-cmeta">Wells Fargo · 2025 · Lead Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">💎</div><div><div class="nwt-ctitle">A premier app for high-net-worth customers</div><div class="nwt-cmeta">Wells Fargo · 2023 · Lead Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">🏦</div><div><div class="nwt-ctitle">End-to-end account-opening journey</div><div class="nwt-cmeta">Wells Fargo · 2022 · Lead Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">🚨</div><div><div class="nwt-ctitle">Decision dashboards under crisis load</div><div class="nwt-cmeta">Kaiser Permanente · 2020 · UX Designer &amp; Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">📈</div><div><div class="nwt-ctitle">KPI &amp; drift monitoring research</div><div class="nwt-cmeta">IBM · 2019 · User Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">🔄</div><div><div class="nwt-ctitle">B2B free-trial onboarding study</div><div class="nwt-cmeta">IBM · 2018 · User Researcher</div></div></div>
+            <div class="nwt-case"><div class="nwt-cpin">🎨</div><div><div class="nwt-ctitle">Design thinking, 100+ designers</div><div class="nwt-cmeta">IBM &amp; AIGA · 2016–2019 · Facilitator</div></div></div>
+          </div>
+
+          <!-- Skills -->
+          <div class="nwt-view" id="nwt-view-skills">
+            <div class="nwt-scat">
+              <div class="nwt-shead">Research</div>
+              <div class="nwt-sitems">
+                <span class="nwt-si">Usability testing</span>
+                <span class="nwt-si">Ethnography &amp; JTBD</span>
+                <span class="nwt-si">Concept testing</span>
+                <span class="nwt-si">Survey design</span>
+                <span class="nwt-si">SPSS, R</span>
+                <span class="nwt-si">Behavioral analytics</span>
+              </div>
+            </div>
+            <div class="nwt-scat">
+              <div class="nwt-shead">Design</div>
+              <div class="nwt-sitems">
+                <span class="nwt-si">Design thinking</span>
+                <span class="nwt-si">Figma, Sketch</span>
+                <span class="nwt-si">Adobe XD, Axure</span>
+                <span class="nwt-si">Photography</span>
+              </div>
+            </div>
+            <div class="nwt-scat">
+              <div class="nwt-shead">Strategy</div>
+              <div class="nwt-sitems">
+                <span class="nwt-si">Roadmapping</span>
+                <span class="nwt-si">Experimentation</span>
+                <span class="nwt-si">Design sprints</span>
+                <span class="nwt-si">Workshop facilitation</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Names -->
+          <div class="nwt-view" id="nwt-view-names">
+            <div class="nwt-card">
+              <div class="nwt-cname">Ron Poznansky</div>
+              <div class="nwt-crole">UX Researcher · San Francisco, CA</div>
+              <div class="nwt-crow"><span class="nwt-cico">✉</span><span>rpoznansky@me.com</span></div>
+              <div class="nwt-crow"><span class="nwt-cico">🔗</span><span>LinkedIn</span></div>
+              <div class="nwt-crow"><span class="nwt-cico">🌐</span><span>ronpaz.com</span></div>
+            </div>
+          </div>
+
+        </div><!-- /content -->
+
+        <!-- Toolbar -->
+        <div class="nwt-toolbar">
+          <button class="nwt-tool nwt-tool-cl" id="nwt-tool-close" title="Close">✕</button>
+          <button class="nwt-tool" title="Route">✉</button>
+          <button class="nwt-tool" title="Notes">📝</button>
+          <button class="nwt-tool" title="Find">🔍</button>
+          <button class="nwt-tool" title="Extras">⬛</button>
+        </div>
+
+      </div><!-- /screen -->
+    </div><!-- /bezel -->
+    <div class="nwt-hw"></div>
+  </div><!-- /device -->
+</div><!-- /bg -->
+</div><!-- /newton-overlay -->
+
+<script>
+(function(){
+  var ov = document.getElementById('lf-newton-overlay');
+  var trig = document.getElementById('lf-newton-egg');
+  var closeX = document.getElementById('nwt-close');
+  var closeT = document.getElementById('nwt-tool-close');
+  var clockEl = document.getElementById('nwt-clock');
+  var iv;
+  if (!ov || !trig) return;
+
+  trig.style.cssText = 'cursor:pointer;border-bottom:1px dotted currentColor;opacity:0.7;';
+
+  function tick() {
+    if (!clockEl) return;
+    var d = new Date();
+    var dy = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+    var mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+    var h = d.getHours(), m = d.getMinutes(), ap = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    clockEl.textContent = dy + ' ' + d.getDate() + ' ' + mo + '  ' + h + ':' + String(m).padStart(2,'0') + ' ' + ap;
+  }
+
+  function open() {
+    ov.classList.add('nwt-open');
+    requestAnimationFrame(function(){ ov.classList.add('nwt-visible'); });
+    document.body.style.overflow = 'hidden';
+    tick(); iv = setInterval(tick, 30000);
+  }
+  function close() {
+    ov.classList.remove('nwt-visible');
+    setTimeout(function(){ ov.classList.remove('nwt-open'); document.body.style.overflow = ''; clearInterval(iv); }, 300);
+  }
+
+  trig.addEventListener('click', open);
+  if (closeX) closeX.addEventListener('click', close);
+  if (closeT) closeT.addEventListener('click', close);
+
+  /* Tab switching */
+  var tabs = ov.querySelectorAll('.nwt-tab[data-nwt]');
+  var views = ov.querySelectorAll('.nwt-view');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('nwt-ta'); });
+      views.forEach(function(v){ v.classList.remove('nwt-active'); });
+      this.classList.add('nwt-ta');
+      var v = document.getElementById('nwt-view-' + this.getAttribute('data-nwt'));
+      if (v) v.classList.add('nwt-active');
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && ov.classList.contains('nwt-open')) close();
   });
 })();
 </script>
