@@ -2363,6 +2363,11 @@ body[data-theme="quantum-core"] .lf-modal-paper {
     rgba(25,28,33,0.08)   0px 0px 0px 1px;
 }
 
+/* ── CV modal — nudge the paper below the topbar so the scrim reads as a thin border ── */
+body[data-theme="quantum-core"] #lf-cv-modal {
+  padding-top: calc(clamp(0px, 2vw, 24px) + 64px + 24px);
+}
+
 /* ── Controls — 12px per spec radius family ── */
 body[data-theme="quantum-core"] .lf-cv-btn,
 body[data-theme="quantum-core"] .lf-modal-close {
